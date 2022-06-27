@@ -1,0 +1,1 @@
+const String baseUrl = "https://fakeapi.platzi.com/doc/auth-jwt";
