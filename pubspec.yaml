@@ -13,6 +13,22 @@ dependencies:
     sdk: flutter
 
   cupertino_icons: ^1.0.5
+  http: ^0.13.4
+  shared_preferences: ^2.0.15
+  flutter_svg: ^1.1.0
+  get: ^4.6.5
+  get_storage: ^2.0.3
+  connectivity_plus: ^2.3.5
+  google_sign_in: ^5.3.3
+  flutter_facebook_auth: ^4.3.4+2
+  awesome_notifications: ^0.6.21
+  path_provider: ^2.0.11
+  rxdart: ^0.27.4
+  material_design_icons_flutter: ^5.0.6595
+  sqflite: ^2.0.2+1
+  intl: ^0.17.0
+  dropdown_button2: ^1.6.2
+  url_launcher: ^6.1.4
 
 dev_dependencies:
   flutter_test:
@@ -22,6 +38,8 @@ dev_dependencies:
 flutter:
 
   uses-material-design: true
+  assets:
+    - assets/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

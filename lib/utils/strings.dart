@@ -1,0 +1,1 @@
+const String appTitle = "Platzi fake store";
