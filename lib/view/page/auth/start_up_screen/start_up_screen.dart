@@ -78,7 +78,9 @@ class StartUpScreen extends StatelessWidget {
                             ],
                           ),
                           const SizedBox(height: 24,),
-                          CustomButton(title: "Sign in with password",textColor: Colors.white,color: Colors.black,onPress: (){}),
+                          CustomButton(title: "Sign in with password",textColor: Colors.white,color: Colors.black,onPress: (){
+                            Get.toNamed(AppRoutes.loginScreen);
+                          }),
                           TextHintButton(
                               padding: 16,
                               hintText: 'Don’t have an account ? ',

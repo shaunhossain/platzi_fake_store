@@ -21,7 +21,7 @@ class TextHintButton extends StatelessWidget {
             children: <TextSpan>[
               TextSpan(text: hintButtonText,
                   style: const TextStyle(
-                      color: Colors.blueAccent, fontSize: 14, fontWeight: FontWeight.w700),
+                      color: Colors.black, fontSize: 14, fontWeight: FontWeight.w700),
                   recognizer: TapGestureRecognizer()
                     ..onTap = onTap
               )
