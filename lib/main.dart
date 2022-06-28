@@ -4,6 +4,7 @@ import 'package:platzi_fake_store/utils/strings.dart';
 import 'package:platzi_fake_store/view/components/themes/themes.dart';
 import 'package:platzi_fake_store/view/services/initial_binding/initial_binding.dart';
 import 'package:platzi_fake_store/view/services/theme_service/theme_service.dart';
+import 'view/components/navigator/app_routes.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: appTitle,
       initialBinding: InitialBinding(),
-      initialRoute: '/',
+      initialRoute: '/start-up-screen',
       getPages: AppPages.list,
       theme: Themes.light,
       darkTheme: Themes.dark,

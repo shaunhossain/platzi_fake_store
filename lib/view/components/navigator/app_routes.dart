@@ -1,5 +1,18 @@
 import 'package:get/get.dart';
 import 'package:platzi_fake_store/view/components/navigator/app_pages.dart';
+import 'package:platzi_fake_store/view/page/auth/login_screen/login_binding/login_binding.dart';
+import 'package:platzi_fake_store/view/page/auth/login_screen/login_screen.dart';
+import 'package:platzi_fake_store/view/page/auth/start_up_screen/start_up_binding/start_up_binding.dart';
+import 'package:platzi_fake_store/view/page/auth/start_up_screen/start_up_screen.dart';
+import 'package:platzi_fake_store/view/page/cart_screen/cart_screen.dart';
+import 'package:platzi_fake_store/view/page/home_screen/home_screen.dart';
+import 'package:platzi_fake_store/view/page/main_screen/main_binding/main_binding.dart';
+import 'package:platzi_fake_store/view/page/main_screen/main_screen.dart';
+import 'package:platzi_fake_store/view/page/order_screen/order_screen.dart';
+import 'package:platzi_fake_store/view/page/profile_screen/profile_screen.dart';
+import 'package:platzi_fake_store/view/page/splash_screen/splash_binding/splash_binding.dart';
+import 'package:platzi_fake_store/view/page/splash_screen/splash_screen.dart';
+import 'package:platzi_fake_store/view/page/wallet_screen/wallet_screen.dart';
 
 
 class AppPages {
@@ -11,99 +24,44 @@ class AppPages {
         binding: SplashBinding(),
         transition: Transition.leftToRight),
     GetPage(
-        name: AppRoutes.loginPage,
-        page: () => const LoginPage(),
+        name: AppRoutes.startUpScreen,
+        page: () => const StartUpScreen(),
+        binding: StartUpBinding(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: AppRoutes.loginScreen,
+        page: () => const LoginScreen(),
         binding: LoginBinding(),
         transition: Transition.leftToRight),
     GetPage(
-        name: AppRoutes.signUpPage,
-        page: () => const SignUpPage(),
-        binding: SignUpBinding(),
-        transition: Transition.rightToLeft),
-    GetPage(
-        name: AppRoutes.forgetPasswordPage,
-        page: () => const ForgetPasswordPage(),
-        binding: ForgetPasswordBinding(),
-        transition: Transition.rightToLeft),
-    GetPage(
-        name: AppRoutes.resetPasswordPage,
-        page: () => const ResetPasswordPage(),
-        binding: ResetPasswordPageBinding(),
-        transition: Transition.rightToLeft),
-    GetPage(
-        name: AppRoutes.verificationPage,
-        page: () => const VerificationPage(),
-        binding: VerificationPageBinding(),
-        transition: Transition.rightToLeft),
-    GetPage(
         name: AppRoutes.mainScreen,
-        page: () => const MainViewScreen(),
-        binding: MainScreenBinding(),
+        page: () => const MainScreen(),
+        binding: MainBinding(),
         transition: Transition.rightToLeft),
     GetPage(
-        name: AppRoutes.homePage,
-        page: () => const HomePage(),
-        binding: MainScreenBinding(),
+        name: AppRoutes.homeScreen,
+        page: () => const HomeScreen(),
+        binding: MainBinding(),
         transition: Transition.rightToLeft),
     GetPage(
-        name: AppRoutes.dashboardPage,
-        page: () => const DashBoardPage(),
-        binding: MainScreenBinding(),
+        name: AppRoutes.cartScreen,
+        page: () => const CartScreen(),
+        binding: MainBinding(),
         transition: Transition.rightToLeft),
     GetPage(
-        name: AppRoutes.profilePage,
-        page: () => const ProfilePage(),
-        binding: MainScreenBinding(),
+        name: AppRoutes.profileScreen,
+        page: () => const ProfileScreen(),
+        binding: MainBinding(),
         transition: Transition.rightToLeft),
     GetPage(
-        name: AppRoutes.editProfilePage,
-        page: () =>  const EditProfilePage(),
-        binding: EditProfileBinding(),
+        name: AppRoutes.orderScreen,
+        page: () =>  const OrderScreen(),
+        binding: MainBinding(),
         transition: Transition.rightToLeft),
     GetPage(
-        name: AppRoutes.notificationPage,
-        page: () => const NotificationPage(),
-        binding: MainScreenBinding(),
-        transition: Transition.rightToLeft),
-    GetPage(
-        name: AppRoutes.habitsPage,
-        page: () => const HabitPage(),
-        binding: HabitBinding(),
-        transition: Transition.rightToLeft),
-    GetPage(
-        name: AppRoutes.habitsDetailsPage,
-        page: () => const HabitDetailsPage(),
-        binding: HabitDetailsBinding(),
-        transition: Transition.rightToLeft),
-    GetPage(
-        name: AppRoutes.createHabitPage,
-        page: () => const CreateHabit(),
-        binding: CreateHabitBinding(),
-        transition: Transition.rightToLeft),
-    GetPage(
-        name: AppRoutes.challengePage,
-        page: () => const ChallengePage(),
-        //binding: MainScreenBinding(),
-        transition: Transition.rightToLeft),
-    GetPage(
-        name: AppRoutes.todoPage,
-        page: () => const TodoPage(),
-        binding: TodoBinding(),
-        transition: Transition.rightToLeft),
-    GetPage(
-        name: AppRoutes.billboardPage,
-        page: () => const BillBoardPage(),
-        binding: BillBoardBinding(),
-        transition: Transition.rightToLeft),
-    GetPage(
-        name: AppRoutes.showBillboardDetailsPage,
-        page: () => const BillboardDetailsPage(),
-        binding: BillBoardDetailsBinding(),
-        transition: Transition.rightToLeft),
-    GetPage(
-        name: AppRoutes.createBillboardPage,
-        page: () => const CreateBillBoardPage(),
-        binding: CreateBillBoardBinding(),
+        name: AppRoutes.walletScreen,
+        page: () => const WalletScreen(),
+        binding: MainBinding(),
         transition: Transition.rightToLeft),
 
   ];
