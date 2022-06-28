@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:platzi_fake_store/view/components/bottom_navbar/bottom_nav_bar_item.dart';
 
 
 class CustomAnimatedBottomBar extends StatelessWidget {
@@ -25,7 +26,7 @@ class CustomAnimatedBottomBar extends StatelessWidget {
   final Color? backgroundColor;
   final bool showElevation;
   final Duration animationDuration;
-  final List<BottomNavyBarItem> items;
+  final List<BottomNavBarItem> items;
   final ValueChanged<int> onItemSelected;
   final MainAxisAlignment mainAxisAlignment;
   final double itemCornerRadius;
@@ -79,7 +80,7 @@ class CustomAnimatedBottomBar extends StatelessWidget {
 class _ItemWidget extends StatelessWidget {
   final double iconSize;
   final bool isSelected;
-  final BottomNavyBarItem item;
+  final BottomNavBarItem item;
   final Color backgroundColor;
   final double itemCornerRadius;
   final Duration animationDuration;
@@ -125,9 +126,7 @@ class _ItemWidget extends StatelessWidget {
                       size: iconSize,
                       color: isSelected
                           ? item.activeColor.withOpacity(1)
-                          : item.inactiveColor == null
-                          ? item.activeColor
-                          : item.inactiveColor,
+                          : item.inactiveColor ?? item.activeColor,
                     ),
                     child: item.icon,
                   ),
@@ -153,21 +152,4 @@ class _ItemWidget extends StatelessWidget {
       ),
     );
   }
-}
-class BottomNavyBarItem {
-
-  BottomNavyBarItem({
-    required this.icon,
-    required this.title,
-    this.activeColor = Colors.blue,
-    this.textAlign,
-    this.inactiveColor,
-  });
-
-  final Widget icon;
-  final Widget title;
-  final Color activeColor;
-  final Color? inactiveColor;
-  final TextAlign? textAlign;
-
 }

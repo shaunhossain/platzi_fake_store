@@ -66,15 +66,15 @@ class StartUpScreen extends StatelessWidget {
                               onPress: () => null),
                           const SizedBox(height: 24,),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Container(width: SizeConfig.width! * 0.4,height: 1,color: Colors.grey.shade400,),
+                              Container(width: SizeConfig.width! * 0.3,height: 1,color: Colors.grey.shade400,),
                               const CustomTextView(
                                   text: "or",
                                   fontSize: 14,
                                   fontWeight: FontWeight.w400,
                                   color: Colors.black),
-                              Container(width: SizeConfig.width! * 0.4,height: 1,color: Colors.grey.shade400,),
+                              Container(width: SizeConfig.width! * 0.3,height: 1,color: Colors.grey.shade400,),
                             ],
                           ),
                           const SizedBox(height: 24,),
