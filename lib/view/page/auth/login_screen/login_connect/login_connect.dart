@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:platzi_fake_store/utils/endpoint.dart';
 
 
 abstract class LoginProvider {
@@ -17,7 +18,7 @@ class ILoginProvider extends GetConnect implements LoginProvider {
     };
     log(jsonBody.toString());
     final response = await http.post(
-      Uri.parse(''),
+      Uri.parse(baseUrl+loginEndpoint),
       body: jsonBody,
     );
     if (response.statusCode == 200) {
