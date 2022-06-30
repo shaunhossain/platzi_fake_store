@@ -6,11 +6,12 @@ class CustomSearchField extends StatelessWidget {
       {Key? key,
       required this.spacing,
       required this.userInput,
-      required this.hint})
+      required this.hint, required this.onTap})
       : super(key: key);
   final double spacing;
   final String hint;
   final TextEditingController userInput;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -60,11 +61,9 @@ class CustomSearchField extends StatelessWidget {
               size: SizeConfig.width! * 0.06,
             ),
             suffixIcon: GestureDetector(
-              onTap: () {
-
-              },
+              onTap: onTap,
               child: Icon(
-                Icons.filter_alt_outlined,
+                Icons.filter_list,
                 color: Colors.black,
                 size: SizeConfig.width! * 0.06,
               ),

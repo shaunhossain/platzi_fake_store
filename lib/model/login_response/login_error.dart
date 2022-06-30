@@ -1,8 +1,3 @@
-// To parse this JSON data, do
-//
-//     final loginError = loginErrorFromMap(jsonString);
-
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 LoginError loginErrorFromMap(String str) => LoginError.fromMap(jsonDecode(str));

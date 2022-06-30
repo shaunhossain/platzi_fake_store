@@ -2,6 +2,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:platzi_fake_store/utils/size_config.dart';
+import 'package:platzi_fake_store/utils/store_user_sessions/store_user_sessions.dart';
+import 'package:platzi_fake_store/view/components/navigator/app_pages.dart';
+import 'package:platzi_fake_store/view/components/widget/home/custom_category_item.dart';
 import 'package:platzi_fake_store/view/components/widget/home/custom_search_field.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
 import 'package:platzi_fake_store/view/components/widget/home/home_screen_header.dart';
@@ -23,7 +26,9 @@ class HomeScreen extends StatelessWidget {
                 controller: controller.productController,
                 slivers: [SliverList(delegate: SliverChildListDelegate([
                  const HomeScreenHeader(),
-                  CustomSearchField(spacing: 10,userInput: TextEditingController(), hint: 'Search',),
+                  CustomSearchField(spacing: 10,userInput: TextEditingController(), hint: 'Search', onTap: () {
+                    showSearchFilter();
+                  },),
                   CustomTextSpanButton(
                     title: 'Special Offer',
                     seeMore: 'See All',
@@ -70,5 +75,73 @@ class HomeScreen extends StatelessWidget {
         ),
       );
     });
+  }
+
+  /// BOTTOM SHEET
+  showSearchFilter() {
+    Get.bottomSheet(
+      Container(
+        height: 330,
+        padding: const EdgeInsets.only(left: 16, bottom: 16, top: 16),
+        child: Column(
+          children: [
+            CustomCategoryItem(
+              title: 'Edit Profile',
+              icon: Icons.edit,
+              onTap: () {
+                Future.delayed(Duration.zero, () {
+                  Get.back();
+                }).then((value) {
+                  Get.toNamed('/edit-profile-page');
+                });
+              },
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            CustomCategoryItem(
+              title: 'Archive',
+              icon: Icons.rotate_left,
+              onTap: () {},
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            CustomCategoryItem(
+              title: 'Invite Friends',
+              icon: Icons.group_add,
+              onTap: () {},
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            CustomCategoryItem(
+              title: 'Settings',
+              icon: Icons.settings,
+              onTap: () {
+
+              },
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            CustomCategoryItem(
+              title: 'Log Out',
+              icon: Icons.power_settings_new,
+              onTap: () {
+                final storage = StoreUserSessions();
+                storage.deleteAllInfo();
+                Get.toNamed(AppRoutes.startUpScreen);
+              },
+            ),
+          ],
+        ),
+      ),
+      backgroundColor: Colors.white,
+      elevation: 0,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10),
+      ),
+    );
   }
 }
