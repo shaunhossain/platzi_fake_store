@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:platzi_fake_store/model/sign_up_response/sign_up_response.dart';
 import 'package:platzi_fake_store/utils/network_type/connection_type.dart';
-import 'package:platzi_fake_store/utils/store_user_sessions/store_user_sessions.dart';
 import 'package:platzi_fake_store/view/components/navigator/app_pages.dart';
 import 'package:platzi_fake_store/view/page/auth/sign_up_screen/sign_up_connect/sign_up_connect.dart';
 import 'package:platzi_fake_store/view/services/initial_controller/initial_controller.dart';
