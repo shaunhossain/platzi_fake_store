@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:platzi_fake_store/view/components/navigator/app_pages.dart';
 import 'package:platzi_fake_store/view/page/auth/login_screen/login_binding/login_binding.dart';
 import 'package:platzi_fake_store/view/page/auth/login_screen/login_screen.dart';
+import 'package:platzi_fake_store/view/page/auth/sign_up_screen/sign_up_binding/sign_up_binding.dart';
+import 'package:platzi_fake_store/view/page/auth/sign_up_screen/sign_up_screen.dart';
 import 'package:platzi_fake_store/view/page/auth/start_up_screen/start_up_binding/start_up_binding.dart';
 import 'package:platzi_fake_store/view/page/auth/start_up_screen/start_up_screen.dart';
 import 'package:platzi_fake_store/view/page/cart_screen/cart_screen.dart';
@@ -32,6 +34,11 @@ class AppPages {
         name: AppRoutes.loginScreen,
         page: () => const LoginScreen(),
         binding: LoginBinding(),
+        transition: Transition.leftToRight),
+    GetPage(
+        name: AppRoutes.signUpScreen,
+        page: () => const SignUpScreen(),
+        binding: SignUpBinding(),
         transition: Transition.leftToRight),
     GetPage(
         name: AppRoutes.mainScreen,
