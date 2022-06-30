@@ -4,6 +4,6 @@ import 'package:platzi_fake_store/view/page/home_screen/home_controller/home_con
 class HomeBinding extends Bindings{
   @override
   void dependencies() {
-    Get.lazyPut<HomeController>(()=> HomeController());
+    Get.put(HomeController());
   }
 }

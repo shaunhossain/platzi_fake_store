@@ -29,6 +29,8 @@ dependencies:
   intl: ^0.17.0
   dropdown_button2: ^1.6.2
   url_launcher: ^6.1.4
+  carousel_slider: ^4.1.1
+  dots_indicator: ^2.1.0
 
 dev_dependencies:
   flutter_test:

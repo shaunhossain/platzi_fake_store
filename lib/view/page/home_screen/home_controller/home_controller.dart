@@ -1,3 +1,6 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class HomeController extends GetxController {}
+class HomeController extends GetxController {
+  ScrollController productController = ScrollController();
+}

@@ -19,7 +19,6 @@ import 'package:platzi_fake_store/view/page/wallet_screen/wallet_screen.dart';
 
 class AppPages {
   static var list = [
-
     GetPage(
         name: AppRoutes.splashScreen,
         page: () => const SplashScreen(),
