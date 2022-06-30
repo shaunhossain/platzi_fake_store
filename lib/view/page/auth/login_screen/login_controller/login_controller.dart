@@ -3,7 +3,10 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:platzi_fake_store/model/login_response/login_response.dart';
 import 'package:platzi_fake_store/utils/network_type/connection_type.dart';
+import 'package:platzi_fake_store/utils/store_user_sessions/store_user_sessions.dart';
+import 'package:platzi_fake_store/view/components/navigator/app_pages.dart';
 import 'package:platzi_fake_store/view/page/auth/login_screen/login_connect/login_connect.dart';
 import 'package:platzi_fake_store/view/services/initial_controller/initial_controller.dart';
 
@@ -14,7 +17,7 @@ class LoginController extends GetxController {
 
   /// private
   final ILoginProvider _provider = ILoginProvider();
-  //final _storage = StoreUserSessions();
+  final _storage = StoreUserSessions();
   final InitialController _controller = Get.find<InitialController>();
 
   /// _inputNumberKey use to check full form input list validation check
@@ -39,10 +42,10 @@ class LoginController extends GetxController {
       try {
         _provider.sendUserLoginRequest(email: email, password: password).then((value){
           try {
-            //final LoginResponse userInfo = loginResponseFromJson(value);
-            // log(userInfo.data!.user.email);
-            // _insertUserSession(userInfo: userInfo);
-            // _checkLogin(userInfo: userInfo, destination: nextRoute, );
+            final LoginResponse loginResponse = loginResponseFromMap(value);
+            log(loginResponse.accessToken);
+            _insertUserSession(loginResponse: loginResponse);
+            _checkLogin(loginResponse: loginResponse, destination: nextRoute, );
           } on Exception catch (e) {
             loginErrorMessage.value ="Your input is wrong";
           }
@@ -65,9 +68,9 @@ class LoginController extends GetxController {
     }
   }
 
-  // Future<void> _insertUserSession({required LoginResponse userInfo}) async {
-  //   await _storage.storeUserInfo(token: userInfo.data!.token.accessToken, userId: userInfo.data!.user.id, userEmail: userInfo.data!.user.email);
-  // }
+  Future<void> _insertUserSession({required LoginResponse loginResponse}) async {
+    await _storage.storeUserToken(token: loginResponse.accessToken);
+  }
 
   // Future<bool> hasLoginSession () async {
   //   String? _token = await _storage.getToken();
@@ -77,33 +80,21 @@ class LoginController extends GetxController {
   //   return false;
   // }
 
-  // void _checkLogin ({required LoginResponse userInfo, required String destination}) async {
-  //   if(userInfo.data!.token.accessToken.isNotEmpty){
-  //     goToRoutes(routeName: destination);
-  //   } else{
-  //     loginErrorMessage.addError("Your input is wrong");
-  //   }
-  // }
+  void _checkLogin ({required LoginResponse loginResponse, required String destination}) async {
+    if(loginResponse.accessToken.isNotEmpty){
+      goToRoutes(routeName: destination);
+    } else{
+      loginErrorMessage.addError("Your input is wrong");
+    }
+  }
 
-  // Future<void> goToRoutes({required String routeName}) async {
-  //   switch(routeName){
-  //     case "Challenge":
-  //       Get.offNamed(AppRoutes.challengePage);
-  //       break;
-  //     case "Habit":
-  //       Get.offNamed(AppRoutes.habitsPage);
-  //       break;
-  //     case "Bills":
-  //       Get.offNamed(AppRoutes.billboardPage);
-  //       break;
-  //     case "To-do":
-  //       Get.offNamed(AppRoutes.todoPage);
-  //       break;
-  //     case "main-screen":
-  //       Get.offAllNamed(AppRoutes.mainScreen);
-  //       break;
-  //   }
-  // }
+  Future<void> goToRoutes({required String routeName}) async {
+    switch(routeName){
+      case "main-screen":
+        Get.offNamed(AppRoutes.mainScreen);
+        break;
+    }
+  }
 
   Future signInWithGoogle() async {
     //final user =  await GoogleSignInApi.login;

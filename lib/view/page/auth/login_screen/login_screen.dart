@@ -94,37 +94,37 @@ class LoginScreen extends StatelessWidget {
         const SizedBox(
           height: 24,
         ),
-        // Obx((){
-        //   return CustomLoginButton(
-        //       minWidth: SizeConfig.width,
-        //       height: 44,
-        //       title: "Log in",
-        //       showProgress:  false,//controller.showProgressBar.value,
-        //       onPress: () async {
-        //         FocusManager.instance.primaryFocus!.unfocus();
-        //         // if (controller.inputKey.currentState!.validate()) {
-        //         //   controller.sendLoginRequest(
-        //         //       email: controller.userEmail.text,
-        //         //       password: controller.userPassword.text,
-        //         //       nextRoute: nextRoute);
-        //         // }
-        //       });
-        // }),
-        CustomLoginButton(
-            minWidth: SizeConfig.width,
-            height: 44,
-            title: "Log in",
-            showProgress:  false,//controller.showProgressBar.value,
-            onPress: () async {
-              Get.toNamed(AppRoutes.mainScreen);
-              //FocusManager.instance.primaryFocus!.unfocus();
-              // if (controller.inputKey.currentState!.validate()) {
-              //   controller.sendLoginRequest(
-              //       email: controller.userEmail.text,
-              //       password: controller.userPassword.text,
-              //       nextRoute: nextRoute);
-              // }
-            }),
+        Obx((){
+          return CustomLoginButton(
+              minWidth: SizeConfig.width,
+              height: 44,
+              title: "Log in",
+              showProgress:  controller.showProgressBar.value,//controller.showProgressBar.value,
+              onPress: () async {
+                FocusManager.instance.primaryFocus!.unfocus();
+                if (controller.inputKey.currentState!.validate()) {
+                  controller.sendLoginRequest(
+                      email: controller.userEmail.text,
+                      password: controller.userPassword.text,
+                      nextRoute: 'main-screen');
+                }
+              });
+        }),
+        // CustomLoginButton(
+        //     minWidth: SizeConfig.width,
+        //     height: 44,
+        //     title: "Log in",
+        //     showProgress:  false,//controller.showProgressBar.value,
+        //     onPress: () async {
+        //       Get.toNamed(AppRoutes.mainScreen);
+        //       //FocusManager.instance.primaryFocus!.unfocus();
+        //       // if (controller.inputKey.currentState!.validate()) {
+        //       //   controller.sendLoginRequest(
+        //       //       email: controller.userEmail.text,
+        //       //       password: controller.userPassword.text,
+        //       //       nextRoute: nextRoute);
+        //       // }
+        //     }),
         Center(
           child: Column(
             children: [
