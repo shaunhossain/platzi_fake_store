@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:platzi_fake_store/model/category/category.dart';
 import 'package:platzi_fake_store/model/category/item_category.dart';
+import 'package:platzi_fake_store/model/offer/offer.dart';
 import 'package:platzi_fake_store/model/product/product_item.dart';
 import 'package:platzi_fake_store/utils/conversion.dart';
 import 'package:platzi_fake_store/utils/network_type/connection_type.dart';
@@ -18,6 +19,7 @@ class HomeController extends GetxController {
   final isButtonPress = false.obs;
   final RxString dataFetchingError = ''.obs;
   final List<Category> productCategory = <Category>[].obs;
+  final List<Offer> offerList = <Offer>[].obs;
    List<ProductItem> allProduct = <ProductItem>[].obs;
 
   final IHomeProvider _homeProvider = IHomeProvider();
@@ -62,6 +64,9 @@ class HomeController extends GetxController {
           try {
             final List<ProductItem> response = productItemFromJson(value);
             allProduct = response;
+            for (var item in response) {
+              offerList.add(Offer(offerPercentage: item.price > 500 ? '30%' : '15%', offerMassage: 'Today\'s Special',description: item.description,image: item.images!.last));
+            }
             log(response.first.title);
           } on Exception catch (e) {
             dataFetchingError.value ="$e";
