@@ -1,34 +1,38 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
 
 
 class CustomCategoryItem extends StatelessWidget {
   const CustomCategoryItem({Key? key, required this.title, required this.icon, required this.onTap}) : super(key: key);
   final String title;
-  final IconData icon;
+  final String icon;
   final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return  GestureDetector(
       onTap: onTap,
-      child: Row(
+      child: Column(
         children: [
           Container(
             alignment: Alignment.center,
-            width: 45,
-            height: 45,
-            decoration: const BoxDecoration(
+            width: 55,
+            height: 55,
+            decoration: BoxDecoration(
               shape: BoxShape.circle,
-              color: Colors.white,
+              color: Colors.grey.shade300,
             ),
-            child: Icon(
-              icon,
-              color: Colors.black,
-            ),
+            child:SvgPicture.asset(
+                icon,
+                width: 30,
+                height: 30,
+                fit: BoxFit.scaleDown,
+                semanticsLabel: 'category item'
+            )
           ),
-          const SizedBox(
-            width: 15,
+          Container(
+            height: 10,
           ),
           CustomTextView(text: title, fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black,),
         ],
