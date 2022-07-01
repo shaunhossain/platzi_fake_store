@@ -4,3 +4,4 @@ const String loginEndpoint = "/auth/login";
 const String signUpEndpoint = "/users/";
 const String profileEndpoint = "/auth/profile";
 const String allCategoryEndpoint = "/categories/";
+const String allProductEndpoint = "/products/?offset=0&limit=10";

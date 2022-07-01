@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:platzi_fake_store/model/category/category.dart';
 import 'package:platzi_fake_store/model/category/item_category.dart';
+import 'package:platzi_fake_store/model/product/product_item.dart';
 import 'package:platzi_fake_store/utils/conversion.dart';
 import 'package:platzi_fake_store/utils/network_type/connection_type.dart';
 import 'package:platzi_fake_store/view/page/home_screen/home_connect/home_connect.dart';
@@ -17,6 +18,7 @@ class HomeController extends GetxController {
   final isButtonPress = false.obs;
   final RxString dataFetchingError = ''.obs;
   final List<Category> productCategory = <Category>[].obs;
+   List<ProductItem> allProduct = <ProductItem>[].obs;
 
   final IHomeProvider _homeProvider = IHomeProvider();
   final InitialController _controller = Get.find<InitialController>();
@@ -25,6 +27,7 @@ class HomeController extends GetxController {
   void onInit() async {
     super.onInit();
     getAllCategory();
+    getAllProduct();
 
   }
 
@@ -33,11 +36,33 @@ class HomeController extends GetxController {
       try {
         _homeProvider.getAllProductCategory().then((value){
           try {
-            final List<ItemCategory> loginResponse = itemCategoryFromMap(value);
-            for (var item in loginResponse) {
+            final List<ItemCategory> response = itemCategoryFromMap(value);
+            for (var item in response) {
               productCategory.add(Category(item.id, item.name,Conversion().selectIcon(name: item.name), item.image));
             }
-            log(loginResponse.first.name);
+            log(response.first.name);
+          } on Exception catch (e) {
+            dataFetchingError.value ="$e";
+          }
+        }, onError: (error){
+          dataFetchingError.value ="$error";
+        });
+      } on SocketException {
+        dataFetchingError.value ="No internet connection";
+      }
+    } else{
+      dataFetchingError.value ="No internet connection";
+    }
+  }
+
+  void getAllProduct(){
+    if(_controller.connectionType.value == ConnectionType.mobile || _controller.connectionType.value == ConnectionType.wifi){
+      try {
+        _homeProvider.getAllProducts().then((value){
+          try {
+            final List<ProductItem> response = productItemFromJson(value);
+            allProduct = response;
+            log(response.first.title);
           } on Exception catch (e) {
             dataFetchingError.value ="$e";
           }
