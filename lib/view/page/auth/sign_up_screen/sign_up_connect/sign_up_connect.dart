@@ -4,21 +4,24 @@ import 'package:http/http.dart' as http;
 import 'package:platzi_fake_store/utils/endpoint.dart';
 
 
-abstract class LoginProvider {
-  Future<dynamic> sendUserLoginRequest({required String email, required String password});
+abstract class RegistrationProvider {
+  Future<dynamic> sendUserRegistrationRequest({required String name,required String email, required String password});
 }
 
-class ILoginProvider extends GetConnect implements LoginProvider {
+class IRegistrationProvider extends GetConnect implements RegistrationProvider {
 
   @override
-  Future sendUserLoginRequest({required String email, required String password}) async {
+  Future sendUserRegistrationRequest({required String name,required String email, required String password}) async {
     Map<String, String> jsonBody = {
+      "name" : name,
       "email" : email,
+      "avatar": "image.jpg",
       "password" : password
     };
+
     log(jsonBody.toString());
     final response = await http.post(
-      Uri.parse(baseUrl+loginEndpoint),
+      Uri.parse(baseUrl + signUpEndpoint),
       body: jsonBody,
     );
     if (response.statusCode == 200) {

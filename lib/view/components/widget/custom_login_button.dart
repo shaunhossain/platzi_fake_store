@@ -31,7 +31,7 @@ class CustomLoginButton extends StatelessWidget {
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
                 color: Colors.white),
-            showProgress == true ?
+            showProgress == false ?
                 const CustomProgressIndicator() : const SizedBox()
           ],
         ));

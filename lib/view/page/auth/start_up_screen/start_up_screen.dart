@@ -86,7 +86,7 @@ class StartUpScreen extends StatelessWidget {
                               hintText: 'Don’t have an account ? ',
                               hintButtonText: 'Sign Up',
                               onTap: () {
-                                Get.toNamed(AppRoutes.loginScreen);
+                                Get.toNamed(AppRoutes.signUpScreen);
                               })
                         ],
                       ),

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:platzi_fake_store/view/components/bottom_navbar/bottom_nav_bar_item.dart';
 
 
@@ -42,8 +41,8 @@ class CustomAnimatedBottomBar extends StatelessWidget {
         color: bgColor,
         boxShadow: [
           if (showElevation)
-            const BoxShadow(
-              color: Colors.black12,
+            BoxShadow(
+              color: Colors.grey.shade300,
               blurRadius: 2,
             ),
         ],
@@ -103,7 +102,7 @@ class _ItemWidget extends StatelessWidget {
       container: true,
       selected: isSelected,
       child: AnimatedContainer(
-        width: isSelected ? 100 : 50,
+        width: 50,
         height: double.maxFinite,
         duration: animationDuration,
         curve: curve,
@@ -116,7 +115,7 @@ class _ItemWidget extends StatelessWidget {
           scrollDirection: Axis.horizontal,
           physics: const NeverScrollableScrollPhysics(),
           child: Container(
-            width: isSelected ? 100 : 50,
+            width: 50,
             padding: const EdgeInsets.symmetric(horizontal: 8),
             child: Stack(
               children: <Widget>[
@@ -128,23 +127,22 @@ class _ItemWidget extends StatelessWidget {
                           ? item.activeColor.withOpacity(1)
                           : item.inactiveColor ?? item.activeColor,
                     ),
-                    child: item.icon,
+                    child: Column(
+                      children: [
+                        item.icon,
+                      ],
+                    ),
                   ),
                 ),
+                if (!isSelected)
+                  Align(
+                      alignment: Alignment.bottomCenter,
+                      child: item.title),
 
                 if (isSelected)
                   Align(
                     alignment: Alignment.bottomCenter,
-                    child: Container(
-                      padding: const EdgeInsets.only(left: 4,right: 4),
-                      child: SvgPicture.asset(
-                        "assets/nav_indicator.svg",
-                        semanticsLabel: 'activity card logo',
-                        width: 40,
-                        height: 5,
-                      ),
-                    ),
-                  ),
+                    child: item.title)
               ],
             ),
           ),
