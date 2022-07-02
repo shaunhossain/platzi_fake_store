@@ -9,7 +9,8 @@ import 'package:platzi_fake_store/view/components/widget/home/custom_category_it
 import 'package:platzi_fake_store/view/components/widget/home/custom_search_field.dart';
 import 'package:platzi_fake_store/view/components/widget/home/home_screen_header.dart';
 import 'package:platzi_fake_store/view/components/widget/home/custom_text_span_button.dart';
-import 'package:platzi_fake_store/view/components/widget/home/product_item.dart';
+import 'package:platzi_fake_store/view/components/widget/home/offer_item.dart';
+import 'package:platzi_fake_store/view/components/widget/home/product_view_item.dart';
 import 'package:platzi_fake_store/view/page/home_screen/home_controller/home_controller.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -34,7 +35,13 @@ class HomeScreen extends StatelessWidget {
                     collapsedHeight: SizeConfig.height!*0.2,
                     flexibleSpace: Column(
                       children: [
-                        const HomeScreenHeader(),
+                        HomeScreenHeader(onTapProfilePhoto: () {
+                          Get.toNamed(AppRoutes.editProfileScreen);
+                        }, onPressNotificationButton: () {
+                          Get.toNamed(AppRoutes.notificationScreen);
+                        }, onPressWishList: () {
+                          Get.toNamed(AppRoutes.myWishlistScreen);
+                        },),
                         CustomSearchField(
                           spacing: 10,
                           userInput: TextEditingController(),
@@ -73,23 +80,10 @@ class HomeScreen extends StatelessWidget {
                                   enlargeCenterPage: true,
                                   scrollDirection: Axis.horizontal,
                                   onPageChanged: controller.onPageChange),
-                              items: [1, 2, 3, 4, 5].map((i) {
+                              items: controller.offerList.map((item) {
                                 return Builder(
                                   builder: (BuildContext context) {
-                                    return Container(
-                                        width: SizeConfig.width,
-                                        margin: const EdgeInsets.symmetric(
-                                            horizontal: 5.0),
-                                        decoration: BoxDecoration(
-                                            color: Colors.grey.shade300,
-                                            borderRadius:
-                                                BorderRadius.circular(30)),
-                                        child: Center(
-                                            child: Text(
-                                          'text $i',
-                                          style:
-                                              const TextStyle(fontSize: 16.0),
-                                        )));
+                                    return OfferItem(offerDetails: item,);
                                   },
                                 );
                               }).toList(),
@@ -98,7 +92,7 @@ class HomeScreen extends StatelessWidget {
                               bottom: 10,
                               child: AnimatedSmoothIndicator(
                                 activeIndex: controller.activeIndex.value,
-                                count: 5,
+                                count: controller.offerList.length,
                                 duration: const Duration(microseconds: 500),
                                 effect: const ExpandingDotsEffect(
                                   dotWidth: 5,
@@ -162,16 +156,16 @@ class HomeScreen extends StatelessWidget {
                   SliverGrid(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
-                        return const ProductItem(title: 'title', point: "12");
+                        return ProductViewItem(productItem: controller.allProduct[index]);
                       },
-                      childCount: 50,
+                      childCount: controller.allProduct.length,
                     ),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      childAspectRatio: 1.0,
+                      crossAxisSpacing: 20,
+                      childAspectRatio: 0.83,
                     ),
                   ),
                 ]),

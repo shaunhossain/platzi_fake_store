@@ -11,7 +11,7 @@ class CustomTextViewWithLine extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      maxLines: 1,
+      maxLines: 2,
       overflow: TextOverflow.clip,
       style: TextStyle(
         color: color,

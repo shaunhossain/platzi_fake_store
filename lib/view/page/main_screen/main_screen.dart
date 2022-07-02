@@ -4,7 +4,7 @@ import 'package:platzi_fake_store/utils/colors.dart';
 import 'package:platzi_fake_store/view/components/bottom_navbar/bottom_nav_bar_item.dart';
 import 'package:platzi_fake_store/view/components/bottom_navbar/custom_animated_bottom_bar.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
-import 'package:platzi_fake_store/view/components/widget/custom_text_view_without_color.dart';
+import 'package:platzi_fake_store/view/components/widget/custom_text_view_ellipsis.dart';
 import 'package:platzi_fake_store/view/page/cart_screen/cart_screen.dart';
 import 'package:platzi_fake_store/view/page/home_screen/home_screen.dart';
 import 'package:platzi_fake_store/view/page/main_screen/main_controller/main_controller.dart';
@@ -37,7 +37,7 @@ class MainScreen extends StatelessWidget {
         bottomNavigationBar: CustomAnimatedBottomBar(
           containerHeight: 60,
           backgroundColor: Colors.white,
-          selectedIndex: controller.pageIndex,
+          selectedIndex: controller.pageIndex.value,
           showElevation: true,
           itemCornerRadius: 12,
           curve: Curves.easeIn,

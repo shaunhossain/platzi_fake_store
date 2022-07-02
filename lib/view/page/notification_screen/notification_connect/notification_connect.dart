@@ -4,12 +4,12 @@ import 'package:http/http.dart' as http;
 import 'package:platzi_fake_store/utils/endpoint.dart';
 
 
-abstract class HomeProvider {
+abstract class NotificationProvider {
   Future<dynamic> getAllProductCategory();
   Future<dynamic> getAllProducts();
 }
 
-class IHomeProvider extends GetConnect implements HomeProvider {
+class INotificationProvider extends GetConnect implements NotificationProvider {
 
   @override
   Future getAllProductCategory() async {

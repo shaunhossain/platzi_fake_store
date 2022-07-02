@@ -27,8 +27,8 @@ class StartUpScreen extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SvgPicture.asset(
-                        width: 300, height: 200, "./assets/start_up.svg"),
+                    Image.asset(
+                        width: 300, height: 200, "./assets/start_up.png"),
                     const SizedBox(
                       height: 32,
                     ),
