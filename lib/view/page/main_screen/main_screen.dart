@@ -37,7 +37,7 @@ class MainScreen extends StatelessWidget {
         bottomNavigationBar: CustomAnimatedBottomBar(
           containerHeight: 60,
           backgroundColor: Colors.white,
-          selectedIndex: controller.pageIndex,
+          selectedIndex: controller.pageIndex.value,
           showElevation: true,
           itemCornerRadius: 12,
           curve: Curves.easeIn,

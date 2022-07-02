@@ -35,7 +35,13 @@ class HomeScreen extends StatelessWidget {
                     collapsedHeight: SizeConfig.height!*0.2,
                     flexibleSpace: Column(
                       children: [
-                        const HomeScreenHeader(),
+                        HomeScreenHeader(onTapProfilePhoto: () {
+                          Get.toNamed(AppRoutes.editProfileScreen);
+                        }, onPressNotificationButton: () {
+                          Get.toNamed(AppRoutes.notificationScreen);
+                        }, onPressWishList: () {
+                          Get.toNamed(AppRoutes.myWishlistScreen);
+                        },),
                         CustomSearchField(
                           spacing: 10,
                           userInput: TextEditingController(),
