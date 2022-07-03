@@ -123,7 +123,7 @@ class HomeScreen extends StatelessWidget {
                       crossAxisCount: 4,
                       mainAxisSpacing: 12,
                       crossAxisSpacing: 12,
-                      childAspectRatio: 1.0,
+                      childAspectRatio: 0.89,
                     ),
                   ),
                   SliverToBoxAdapter(
@@ -165,7 +165,7 @@ class HomeScreen extends StatelessWidget {
                       crossAxisCount: 2,
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 20,
-                      childAspectRatio: 0.83,
+                      childAspectRatio: 0.79,
                     ),
                   ),
                 ]),
