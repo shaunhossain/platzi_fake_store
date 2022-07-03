@@ -18,6 +18,8 @@ import 'package:platzi_fake_store/view/page/notification_screen/notification_bin
 import 'package:platzi_fake_store/view/page/notification_screen/notification_screen.dart';
 import 'package:platzi_fake_store/view/page/order_screen/order_screen.dart';
 import 'package:platzi_fake_store/view/page/profile_screen/profile_screen.dart';
+import 'package:platzi_fake_store/view/page/search_product_screen/search_product_binding/search_product_binding.dart';
+import 'package:platzi_fake_store/view/page/search_product_screen/search_product_screen.dart';
 import 'package:platzi_fake_store/view/page/splash_screen/splash_binding/splash_binding.dart';
 import 'package:platzi_fake_store/view/page/splash_screen/splash_screen.dart';
 import 'package:platzi_fake_store/view/page/wallet_screen/wallet_screen.dart';
@@ -54,6 +56,11 @@ class AppPages {
         name: AppRoutes.homeScreen,
         page: () => const HomeScreen(),
         binding: MainBinding(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: AppRoutes.searchProductScreen,
+        page: () => const SearchProductScreen(),
+        binding: SearchProductBinding(),
         transition: Transition.rightToLeft),
     GetPage(
         name: AppRoutes.notificationScreen,

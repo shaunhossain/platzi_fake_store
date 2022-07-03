@@ -5,6 +5,7 @@ class AppRoutes {
   static const String signUpScreen = '/sign-up-screen';
   static const String mainScreen = '/main-screen';
   static const String homeScreen = '/home-screen';
+  static const String searchProductScreen = '/search-product-screen';
   static const String notificationScreen = '/notification-screen';
   static const String myWishlistScreen = '/my-wishlist-screen';
   static const String orderScreen = '/order-screen';

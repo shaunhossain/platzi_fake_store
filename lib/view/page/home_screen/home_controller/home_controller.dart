@@ -21,6 +21,9 @@ class HomeController extends GetxController {
   final List<Category> productCategory = <Category>[].obs;
   final List<Offer> offerList = <Offer>[].obs;
    List<ProductItem> allProduct = <ProductItem>[].obs;
+  var categoryProgressBar = true.obs;
+  var productProgressBar = true.obs;
+  var showShimmerEffect = false.obs;
 
   final IHomeProvider _homeProvider = IHomeProvider();
   final InitialController _controller = Get.find<InitialController>();
@@ -30,7 +33,6 @@ class HomeController extends GetxController {
     super.onInit();
     getAllCategory();
     getAllProduct();
-
   }
 
   void getAllCategory(){

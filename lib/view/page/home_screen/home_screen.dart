@@ -31,8 +31,8 @@ class HomeScreen extends StatelessWidget {
                 slivers: [
                   SliverAppBar(
                     backgroundColor: Colors.white,
-                    expandedHeight: SizeConfig.height!*0.2,
-                    collapsedHeight: SizeConfig.height!*0.2,
+                    expandedHeight: SizeConfig.height!*0.16,
+                    collapsedHeight: SizeConfig.height!*0.16,
                     flexibleSpace: Column(
                       children: [
                         HomeScreenHeader(onTapProfilePhoto: () {
@@ -44,10 +44,9 @@ class HomeScreen extends StatelessWidget {
                         },),
                         CustomSearchField(
                           spacing: 10,
-                          userInput: TextEditingController(),
                           hint: 'Search',
                           onTap: () {
-                            showSearchFilter();
+                            Get.toNamed(AppRoutes.searchProductScreen);
                           },
                         ),
                       ],
@@ -173,71 +172,5 @@ class HomeScreen extends StatelessWidget {
         ),
       );
     });
-  }
-
-  /// BOTTOM SHEET
-  showSearchFilter() {
-    Get.bottomSheet(
-      Container(
-        height: 330,
-        padding: const EdgeInsets.only(left: 16, bottom: 16, top: 16),
-        child: Column(
-          children: [
-            CustomCategoryItem(
-              title: 'Edit Profile',
-              icon: 'assets/shoes',
-              onTap: () {
-                Future.delayed(Duration.zero, () {
-                  Get.back();
-                }).then((value) {
-                  Get.toNamed('/edit-profile-page');
-                });
-              },
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            CustomCategoryItem(
-              title: 'Archive',
-              icon: 'assets/shoes',
-              onTap: () {},
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            CustomCategoryItem(
-              title: 'Invite Friends',
-              icon: 'assets/shoes',
-              onTap: () {},
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            CustomCategoryItem(
-              title: 'Settings',
-              icon: 'assets/shoes',
-              onTap: () {},
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            CustomCategoryItem(
-              title: 'Log Out',
-              icon: 'assets/shoes',
-              onTap: () {
-                final storage = StoreUserSessions();
-                storage.deleteAllInfo();
-                Get.toNamed(AppRoutes.startUpScreen);
-              },
-            ),
-          ],
-        ),
-      ),
-      backgroundColor: Colors.white,
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-    );
   }
 }
