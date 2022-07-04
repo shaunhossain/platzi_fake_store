@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:platzi_fake_store/utils/size_config.dart';
-import 'package:platzi_fake_store/utils/store_user_sessions/store_user_sessions.dart';
 import 'package:platzi_fake_store/view/components/navigator/app_pages.dart';
 import 'package:platzi_fake_store/view/components/widget/home/custom_category_button.dart';
 import 'package:platzi_fake_store/view/components/widget/home/custom_category_item.dart';
@@ -31,9 +30,11 @@ class HomeScreen extends StatelessWidget {
                 slivers: [
                   SliverAppBar(
                     backgroundColor: Colors.white,
-                    expandedHeight: SizeConfig.height!*0.2,
-                    collapsedHeight: SizeConfig.height!*0.2,
+                    expandedHeight: SizeConfig.height!*0.18,
+                    collapsedHeight: SizeConfig.height!*0.18,
                     flexibleSpace: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         HomeScreenHeader(onTapProfilePhoto: () {
                           Get.toNamed(AppRoutes.editProfileScreen);
@@ -43,11 +44,10 @@ class HomeScreen extends StatelessWidget {
                           Get.toNamed(AppRoutes.myWishlistScreen);
                         },),
                         CustomSearchField(
-                          spacing: 10,
-                          userInput: TextEditingController(),
+                          spacing: 0,
                           hint: 'Search',
                           onTap: () {
-                            showSearchFilter();
+                            Get.toNamed(AppRoutes.searchProductScreen);
                           },
                         ),
                       ],
@@ -59,7 +59,9 @@ class HomeScreen extends StatelessWidget {
                         CustomTextSpanButton(
                           title: 'Special Offer',
                           seeMore: 'See All',
-                          onPress: () {},
+                          onPress: () {
+                            Get.toNamed(AppRoutes.specialOfferScreen);
+                          },
                         ),
                         Stack(
                           alignment: Alignment.center,
@@ -114,7 +116,9 @@ class HomeScreen extends StatelessWidget {
                         return CustomCategoryItem(
                             title: controller.productCategory[index].name,
                             icon: controller.productCategory[index].icon,
-                            onTap: () {});
+                            onTap: () {
+                              Get.toNamed(AppRoutes.viewSingleCategoryScreen);
+                            });
                       },
                       childCount: controller.productCategory.length,
                     ),
@@ -123,14 +127,16 @@ class HomeScreen extends StatelessWidget {
                       crossAxisCount: 4,
                       mainAxisSpacing: 12,
                       crossAxisSpacing: 12,
-                      childAspectRatio: 1.0,
+                      childAspectRatio: 0.89,
                     ),
                   ),
                   SliverToBoxAdapter(
                     child: CustomTextSpanButton(
                       title: 'Most Popular',
                       seeMore: 'See All',
-                      onPress: () {},
+                      onPress: () {
+                        Get.toNamed(AppRoutes.mostPopularScreen);
+                      },
                     ),
                   ),
                   SliverToBoxAdapter(
@@ -147,8 +153,7 @@ class HomeScreen extends StatelessWidget {
                                       padding: 10,
                                       buttonColor: Colors.white,
                                       onPress: () {
-                                        controller.isButtonPress.value =
-                                            !controller.isButtonPress.value;
+                                        Get.toNamed(AppRoutes.viewSingleCategoryScreen);
                                       },
                                     )))
                                 .toList(),
@@ -156,7 +161,9 @@ class HomeScreen extends StatelessWidget {
                   SliverGrid(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
-                        return ProductViewItem(productItem: controller.allProduct[index]);
+                        return ProductViewItem(productItem: controller.allProduct[index], onTap: () {
+                          Get.toNamed(AppRoutes.viewProductScreen);
+                        },);
                       },
                       childCount: controller.allProduct.length,
                     ),
@@ -165,7 +172,7 @@ class HomeScreen extends StatelessWidget {
                       crossAxisCount: 2,
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 20,
-                      childAspectRatio: 0.83,
+                      childAspectRatio: 0.79,
                     ),
                   ),
                 ]),
@@ -173,71 +180,5 @@ class HomeScreen extends StatelessWidget {
         ),
       );
     });
-  }
-
-  /// BOTTOM SHEET
-  showSearchFilter() {
-    Get.bottomSheet(
-      Container(
-        height: 330,
-        padding: const EdgeInsets.only(left: 16, bottom: 16, top: 16),
-        child: Column(
-          children: [
-            CustomCategoryItem(
-              title: 'Edit Profile',
-              icon: 'assets/shoes',
-              onTap: () {
-                Future.delayed(Duration.zero, () {
-                  Get.back();
-                }).then((value) {
-                  Get.toNamed('/edit-profile-page');
-                });
-              },
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            CustomCategoryItem(
-              title: 'Archive',
-              icon: 'assets/shoes',
-              onTap: () {},
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            CustomCategoryItem(
-              title: 'Invite Friends',
-              icon: 'assets/shoes',
-              onTap: () {},
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            CustomCategoryItem(
-              title: 'Settings',
-              icon: 'assets/shoes',
-              onTap: () {},
-            ),
-            const SizedBox(
-              height: 16,
-            ),
-            CustomCategoryItem(
-              title: 'Log Out',
-              icon: 'assets/shoes',
-              onTap: () {
-                final storage = StoreUserSessions();
-                storage.deleteAllInfo();
-                Get.toNamed(AppRoutes.startUpScreen);
-              },
-            ),
-          ],
-        ),
-      ),
-      backgroundColor: Colors.white,
-      elevation: 0,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(10),
-      ),
-    );
   }
 }

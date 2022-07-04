@@ -1,80 +1,81 @@
 import 'package:flutter/material.dart';
 import 'package:platzi_fake_store/utils/size_config.dart';
+import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
 
 class CustomSearchField extends StatelessWidget {
   const CustomSearchField(
       {Key? key,
       required this.spacing,
-      required this.userInput,
-      required this.hint, required this.onTap})
+      required this.hint,
+      required this.onTap})
       : super(key: key);
   final double spacing;
   final String hint;
-  final TextEditingController userInput;
   final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(
-          height: spacing,
-        ),
-        TextFormField(
-          style: TextStyle(
-            fontSize: SizeConfig.textScaleFactor! * 20,
-            fontWeight: FontWeight.w400,
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          SizedBox(
+            height: spacing,
           ),
-          onChanged: (value) => userInput,
-          controller: userInput,
-          keyboardType: TextInputType.emailAddress,
-          decoration: InputDecoration(
-            fillColor: Colors.grey.shade300,
-            filled: true,
-            errorStyle: TextStyle(
-              color: Colors.redAccent,
-              fontSize: SizeConfig.textScaleFactor! * 14,
-            ),
-            enabledBorder: OutlineInputBorder(
+          Card(
+            elevation: 0.1,
+            shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(
-                color: Colors.white,
-              ),
-            ),
-            border: OutlineInputBorder(
-              borderRadius: BorderRadius.circular(10),
-              borderSide: const BorderSide(
-                color: Colors.white,
-                style: BorderStyle.solid,
-                width: 1,
-              ),
-            ),
-            isDense: true,
-            contentPadding:
-                const EdgeInsets.only(left: 16, bottom: 0, top: 0, right: -10),
-            prefixIcon: Icon(
-              Icons.search,
-              color: Colors.grey,
-              size: SizeConfig.width! * 0.06,
-            ),
-            suffixIcon: GestureDetector(
-              onTap: onTap,
-              child: Icon(
-                Icons.filter_list,
+              side: const BorderSide(
                 color: Colors.black,
-                size: SizeConfig.width! * 0.06,
+                width: 1.0,
               ),
             ),
-            hintText: hint,
-            hintStyle: TextStyle(
-                color: Colors.grey.shade400,
-                fontSize: SizeConfig.textScaleFactor! * 14),
-          ),
-        ),
-      ],
+            child: Container(
+              width: SizeConfig.width,
+              height: SizeConfig.height! * 0.06,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.grey.shade300),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(left: 10.0,right: 12),
+                        child: Icon(
+                          Icons.search,
+                          color: Colors.grey,
+                          size: SizeConfig.width! * 0.06,
+                        ),
+                      ),
+                      CustomTextView(
+                          text: hint,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.grey.shade700),
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 12.0),
+                    child: Icon(
+                      Icons.filter_list,
+                      color: Colors.grey,
+                      size: SizeConfig.width! * 0.06,
+                    ),
+                  )
+                ],
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 }

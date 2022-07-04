@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
+import 'package:platzi_fake_store/view/components/widget/custom_text_view_ellipsis.dart';
 
 
 class CustomCategoryItem extends StatelessWidget {
@@ -34,7 +34,7 @@ class CustomCategoryItem extends StatelessWidget {
           Container(
             height: 10,
           ),
-          CustomTextView(text: title, fontSize: 16, fontWeight: FontWeight.w600, color: Colors.black,),
+          CustomTextViewEllipsis(text: title, fontSize: 14, fontWeight: FontWeight.w500, color: Colors.black,),
         ],
       ),
     );

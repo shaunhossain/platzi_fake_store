@@ -67,7 +67,7 @@ class HomeScreenHeader extends StatelessWidget {
           ],
         ),
         SizedBox(
-          width: SizeConfig.width! * 0.28,
+          width: SizeConfig.width! * 0.24,
           //color: Colors.blueAccent,
           child: Row(
             children: [
