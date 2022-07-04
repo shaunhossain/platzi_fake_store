@@ -90,7 +90,7 @@ class AppPages {
         transition: Transition.rightToLeft),
     GetPage(
         name: AppRoutes.viewSingleCategoryScreen,
-        page: () => const ViewSingleCategoryScreen(),
+        page: () => ViewSingleCategoryScreen(),
         binding: ViewSingleCategoryBinding(),
         transition: Transition.rightToLeft),
     GetPage(

@@ -44,7 +44,7 @@ class HomeController extends GetxController {
             for (var item in response) {
               productCategory.add(Category(item.id, item.name,Conversion().selectIcon(name: item.name), item.image));
             }
-            log(response.first.name);
+            //log(response.first.name);
           } on Exception catch (e) {
             dataFetchingError.value ="$e";
           }
@@ -69,7 +69,7 @@ class HomeController extends GetxController {
             for (var item in response) {
               offerList.add(Offer(offerPercentage: item.price > 500 ? '30%' : '15%', offerMassage: 'Today\'s Special',description: item.description,image: item.images!.last));
             }
-            log(response.first.title);
+            //log(response.first.title);
           } on Exception catch (e) {
             dataFetchingError.value ="$e";
           }

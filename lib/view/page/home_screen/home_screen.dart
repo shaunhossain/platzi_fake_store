@@ -117,7 +117,7 @@ class HomeScreen extends StatelessWidget {
                             title: controller.productCategory[index].name,
                             icon: controller.productCategory[index].icon,
                             onTap: () {
-                              Get.toNamed(AppRoutes.viewSingleCategoryScreen);
+                              Get.toNamed(AppRoutes.viewSingleCategoryScreen, arguments: controller.productCategory[index]);
                             });
                       },
                       childCount: controller.productCategory.length,
@@ -153,7 +153,7 @@ class HomeScreen extends StatelessWidget {
                                       padding: 10,
                                       buttonColor: Colors.white,
                                       onPress: () {
-                                        Get.toNamed(AppRoutes.viewSingleCategoryScreen);
+                                        Get.toNamed(AppRoutes.viewSingleCategoryScreen, arguments: item);
                                       },
                                     )))
                                 .toList(),
