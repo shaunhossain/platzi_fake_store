@@ -5,6 +5,11 @@ class SpecialOfferScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return const SafeArea(
+        child: Scaffold(
+      body: Center(
+        child: Text("Special offer"),
+      ),
+    ));
   }
 }

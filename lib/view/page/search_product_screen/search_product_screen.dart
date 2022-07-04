@@ -4,6 +4,7 @@ import 'package:platzi_fake_store/utils/size_config.dart';
 import 'package:platzi_fake_store/utils/store_user_sessions/store_user_sessions.dart';
 import 'package:platzi_fake_store/view/components/navigator/app_pages.dart';
 import 'package:platzi_fake_store/view/components/widget/home/custom_category_item.dart';
+import 'package:platzi_fake_store/view/components/widget/navigate_back_button.dart';
 import 'package:platzi_fake_store/view/components/widget/search_product/custom_search_bar_field.dart';
 
 class SearchProductScreen extends StatelessWidget {
@@ -20,15 +21,28 @@ class SearchProductScreen extends StatelessWidget {
             SliverAppBar(
               backgroundColor: Colors.white,
               automaticallyImplyLeading: false,
-              expandedHeight: SizeConfig.height!*0.16,
-              collapsedHeight: SizeConfig.height!*0.16,
-              flexibleSpace: Column(
-                children: [
-                  CustomSearchBarField(hint: 'Search', spacing: 20,
-                    userInput: TextEditingController(), onTap: () {
-                    showSearchFilter();
-                      })
-                ],
+              expandedHeight: SizeConfig.height!*0.1,
+              collapsedHeight: SizeConfig.height!*0.1,
+              flexibleSpace: Container(
+                margin: const EdgeInsets.only(top: 16,right: 12),
+                child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Expanded(
+                      flex: 2,
+                        child: NavigateBackButton(
+                            icon: Icons.arrow_back,
+                            onPress: () => Get.back())),
+                    Expanded(
+                      flex: 10,
+                      child: CustomSearchBarField(hint: 'Search',
+                        userInput: TextEditingController(), onTap: () {
+                        showSearchFilter();
+                          }),
+                    ),
+                  ],
+                ),
               ),
             ),
           ],

@@ -5,10 +5,11 @@ class ViewSingleCategoryScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('My WishList'),
-      ),
-    );
+    return const SafeArea(
+        child: Scaffold(
+          body: Center(
+            child: Text("view single category product"),
+          ),
+        ));
   }
 }

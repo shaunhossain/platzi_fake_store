@@ -31,9 +31,11 @@ class HomeScreen extends StatelessWidget {
                 slivers: [
                   SliverAppBar(
                     backgroundColor: Colors.white,
-                    expandedHeight: SizeConfig.height!*0.16,
-                    collapsedHeight: SizeConfig.height!*0.16,
+                    expandedHeight: SizeConfig.height!*0.18,
+                    collapsedHeight: SizeConfig.height!*0.18,
                     flexibleSpace: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         HomeScreenHeader(onTapProfilePhoto: () {
                           Get.toNamed(AppRoutes.editProfileScreen);
@@ -43,7 +45,7 @@ class HomeScreen extends StatelessWidget {
                           Get.toNamed(AppRoutes.myWishlistScreen);
                         },),
                         CustomSearchField(
-                          spacing: 10,
+                          spacing: 0,
                           hint: 'Search',
                           onTap: () {
                             Get.toNamed(AppRoutes.searchProductScreen);
@@ -58,7 +60,9 @@ class HomeScreen extends StatelessWidget {
                         CustomTextSpanButton(
                           title: 'Special Offer',
                           seeMore: 'See All',
-                          onPress: () {},
+                          onPress: () {
+                            Get.toNamed(AppRoutes.specialOfferScreen);
+                          },
                         ),
                         Stack(
                           alignment: Alignment.center,
@@ -113,7 +117,9 @@ class HomeScreen extends StatelessWidget {
                         return CustomCategoryItem(
                             title: controller.productCategory[index].name,
                             icon: controller.productCategory[index].icon,
-                            onTap: () {});
+                            onTap: () {
+                              Get.toNamed(AppRoutes.viewSingleCategoryScreen);
+                            });
                       },
                       childCount: controller.productCategory.length,
                     ),
@@ -129,7 +135,9 @@ class HomeScreen extends StatelessWidget {
                     child: CustomTextSpanButton(
                       title: 'Most Popular',
                       seeMore: 'See All',
-                      onPress: () {},
+                      onPress: () {
+                        Get.toNamed(AppRoutes.mostPopularScreen);
+                      },
                     ),
                   ),
                   SliverToBoxAdapter(
@@ -146,8 +154,7 @@ class HomeScreen extends StatelessWidget {
                                       padding: 10,
                                       buttonColor: Colors.white,
                                       onPress: () {
-                                        controller.isButtonPress.value =
-                                            !controller.isButtonPress.value;
+                                        Get.toNamed(AppRoutes.viewSingleCategoryScreen);
                                       },
                                     )))
                                 .toList(),
@@ -155,7 +162,9 @@ class HomeScreen extends StatelessWidget {
                   SliverGrid(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
-                        return ProductViewItem(productItem: controller.allProduct[index]);
+                        return ProductViewItem(productItem: controller.allProduct[index], onTap: () {
+                          Get.toNamed(AppRoutes.viewProductScreen);
+                        },);
                       },
                       childCount: controller.allProduct.length,
                     ),

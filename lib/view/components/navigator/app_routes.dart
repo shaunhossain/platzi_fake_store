@@ -12,6 +12,8 @@ import 'package:platzi_fake_store/view/page/edit_profile_screen/edit_profile_scr
 import 'package:platzi_fake_store/view/page/home_screen/home_screen.dart';
 import 'package:platzi_fake_store/view/page/main_screen/main_binding/main_binding.dart';
 import 'package:platzi_fake_store/view/page/main_screen/main_screen.dart';
+import 'package:platzi_fake_store/view/page/most_popular_screen/most_popular_binding/most_popular_binding.dart';
+import 'package:platzi_fake_store/view/page/most_popular_screen/most_popular_screen.dart';
 import 'package:platzi_fake_store/view/page/my_wishlist_screen/my_wishlist_binding/my_wishlist_binding.dart';
 import 'package:platzi_fake_store/view/page/my_wishlist_screen/my_wishlist_screen.dart';
 import 'package:platzi_fake_store/view/page/notification_screen/notification_binding/notification_binding.dart';
@@ -20,9 +22,18 @@ import 'package:platzi_fake_store/view/page/order_screen/order_screen.dart';
 import 'package:platzi_fake_store/view/page/profile_screen/profile_screen.dart';
 import 'package:platzi_fake_store/view/page/search_product_screen/search_product_binding/search_product_binding.dart';
 import 'package:platzi_fake_store/view/page/search_product_screen/search_product_screen.dart';
+import 'package:platzi_fake_store/view/page/special_offer_screen/special_offer_binding/special_offer_binding.dart';
+import 'package:platzi_fake_store/view/page/special_offer_screen/special_offer_screen.dart';
 import 'package:platzi_fake_store/view/page/splash_screen/splash_binding/splash_binding.dart';
 import 'package:platzi_fake_store/view/page/splash_screen/splash_screen.dart';
+import 'package:platzi_fake_store/view/page/view_product_screen/view_product_binding/view_product_binding.dart';
+import 'package:platzi_fake_store/view/page/view_product_screen/view_product_screen.dart';
+import 'package:platzi_fake_store/view/page/view_single_carousel_screen/view_single_carousel_screen.dart';
+import 'package:platzi_fake_store/view/page/view_single_category_screen/view_single_category_binding/view_single_category_binding.dart';
+import 'package:platzi_fake_store/view/page/view_single_category_screen/view_single_category_screen.dart';
 import 'package:platzi_fake_store/view/page/wallet_screen/wallet_screen.dart';
+
+import '../../page/view_single_carousel_screen/view_single_carousel_binding/view_single_carousel_binding.dart';
 
 
 class AppPages {
@@ -71,6 +82,31 @@ class AppPages {
         name: AppRoutes.myWishlistScreen,
         page: () => const MyWishlistScreen(),
         binding: MyWishlistBinding(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: AppRoutes.specialOfferScreen,
+        page: () => const SpecialOfferScreen(),
+        binding: SpecialOfferBinding(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: AppRoutes.viewSingleCategoryScreen,
+        page: () => const ViewSingleCategoryScreen(),
+        binding: ViewSingleCategoryBinding(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: AppRoutes.viewSingleCarouselScreen,
+        page: () => const ViewSingleCarouselScreen(),
+        binding: ViewSingleCarouselBinding(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: AppRoutes.mostPopularScreen,
+        page: () => const MostPopularScreen(),
+        binding: MostPopularBinding(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: AppRoutes.viewProductScreen,
+        page: () => const ViewProductScreen(),
+        binding: ViewProductsBinding(),
         transition: Transition.rightToLeft),
     GetPage(
         name: AppRoutes.cartScreen,
