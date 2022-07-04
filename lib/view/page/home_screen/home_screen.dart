@@ -2,7 +2,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:platzi_fake_store/utils/size_config.dart';
-import 'package:platzi_fake_store/utils/store_user_sessions/store_user_sessions.dart';
 import 'package:platzi_fake_store/view/components/navigator/app_pages.dart';
 import 'package:platzi_fake_store/view/components/widget/home/custom_category_button.dart';
 import 'package:platzi_fake_store/view/components/widget/home/custom_category_item.dart';

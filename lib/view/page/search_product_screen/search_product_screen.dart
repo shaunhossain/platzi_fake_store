@@ -24,25 +24,11 @@ class SearchProductScreen extends StatelessWidget {
               expandedHeight: SizeConfig.height!*0.1,
               collapsedHeight: SizeConfig.height!*0.1,
               flexibleSpace: Container(
-                margin: const EdgeInsets.only(top: 16,right: 12),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Expanded(
-                      flex: 2,
-                        child: NavigateBackButton(
-                            icon: Icons.arrow_back,
-                            onPress: () => Get.back())),
-                    Expanded(
-                      flex: 10,
-                      child: CustomSearchBarField(hint: 'Search',
-                        userInput: TextEditingController(), onTap: () {
-                        showSearchFilter();
-                          }),
-                    ),
-                  ],
-                ),
+                margin: const EdgeInsets.only(top: 16,right: 12,left: 12),
+                child: CustomSearchBarField(hint: 'Search',
+                  userInput: TextEditingController(), onTap: () {
+                  showSearchFilter();
+                    }),
               ),
             ),
           ],
