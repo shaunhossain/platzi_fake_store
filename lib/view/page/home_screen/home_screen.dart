@@ -30,6 +30,7 @@ class HomeScreen extends StatelessWidget {
                 slivers: [
                   SliverAppBar(
                     backgroundColor: Colors.white,
+                    automaticallyImplyLeading: false,
                     expandedHeight: SizeConfig.height!*0.18,
                     collapsedHeight: SizeConfig.height!*0.18,
                     flexibleSpace: Column(
