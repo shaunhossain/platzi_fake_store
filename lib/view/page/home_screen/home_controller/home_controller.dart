@@ -34,56 +34,62 @@ class HomeController extends GetxController {
     getAllProduct();
   }
 
-  void getAllCategory(){
-    if(_controller.connectionType.value == ConnectionType.mobile || _controller.connectionType.value == ConnectionType.wifi){
+  void getAllCategory() {
+    if (_controller.connectionType.value == ConnectionType.mobile ||
+        _controller.connectionType.value == ConnectionType.wifi) {
       try {
-        _homeProvider.getAllProductCategory().then((value){
+        _homeProvider.getAllProductCategory().then((value) {
           try {
             final List<ItemCategory> response = itemCategoryFromMap(value);
             for (var item in response) {
-              productCategory.add(Category(item.id, item.name,Conversion().selectIcon(name: item.name), item.image));
+              productCategory.add(Category(item.id, item.name,
+                  Conversion().selectIcon(name: item.name), item.image));
             }
             //log(response.first.name);
           } on Exception catch (e) {
-            dataFetchingError.value ="$e";
+            dataFetchingError.value = "$e";
           }
-        }, onError: (error){
-          dataFetchingError.value ="$error";
+        }, onError: (error) {
+          dataFetchingError.value = "$error";
         });
       } on SocketException {
-        dataFetchingError.value ="No internet connection";
+        dataFetchingError.value = "No internet connection";
       }
-    } else{
-      dataFetchingError.value ="No internet connection";
+    } else {
+      dataFetchingError.value = "No internet connection";
     }
   }
 
-  void getAllProduct(){
-    if(_controller.connectionType.value == ConnectionType.mobile || _controller.connectionType.value == ConnectionType.wifi){
+  void getAllProduct() {
+    if (_controller.connectionType.value == ConnectionType.mobile ||
+        _controller.connectionType.value == ConnectionType.wifi) {
       try {
-        _homeProvider.getAllProducts().then((value){
+        _homeProvider.getAllProducts().then((value) {
           try {
             final List<ProductItem> response = productItemFromJson(value);
             allProduct = response;
             for (var item in response) {
-              offerList.add(Offer(offerPercentage: item.price > 500 ? '30%' : '15%', offerMassage: 'Today\'s Special',description: item.description,image: item.images!.last));
+              offerList.add(Offer(
+                  offerPercentage: item.price > 500 ? '30%' : '15%',
+                  offerMassage: 'Today\'s Special',
+                  item: item));
             }
             //log(response.first.title);
           } on Exception catch (e) {
-            dataFetchingError.value ="$e";
+            dataFetchingError.value = "$e";
           }
-        }, onError: (error){
-          dataFetchingError.value ="$error";
+        }, onError: (error) {
+          dataFetchingError.value = "$error";
         });
       } on SocketException {
-        dataFetchingError.value ="No internet connection";
+        dataFetchingError.value = "No internet connection";
       }
-    } else{
-      dataFetchingError.value ="No internet connection";
+    } else {
+      dataFetchingError.value = "No internet connection";
     }
   }
 
-  void onPageChange(int index , CarouselPageChangedReason reason){
+  void onPageChange(int index, CarouselPageChangedReason reason) {
     activeIndex.value = index;
     update();
   }

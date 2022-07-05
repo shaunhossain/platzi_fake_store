@@ -66,7 +66,7 @@ class _ViewSingleCategoryScreenState extends State<ViewSingleCategoryScreen> {
                 return ProductViewItem(
                   productItem: controller.allProductOfCategory[index],
                   onTap: () {
-                    Get.toNamed(AppRoutes.viewProductScreen);
+                    Get.toNamed(AppRoutes.viewProductScreen,arguments: controller.allProductOfCategory[index]);
                   },
                 );
               }),),

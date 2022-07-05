@@ -5,11 +5,16 @@ import 'package:platzi_fake_store/model/product/product_item.dart';
 import 'package:platzi_fake_store/utils/size_config.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
 import 'package:platzi_fake_store/view/components/widget/view_product/color_selector.dart';
+import 'package:platzi_fake_store/view/components/widget/view_product/custom_add_cart_button.dart';
+import 'package:platzi_fake_store/view/components/widget/view_product/custom_product_count.dart';
+import 'package:platzi_fake_store/view/components/widget/view_product/custom_product_footer.dart';
+import 'package:platzi_fake_store/view/components/widget/view_product/custom_product_rate.dart';
 import 'package:platzi_fake_store/view/page/view_product_screen/view_product_controller/view_product_controller.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ViewProductScreen extends StatelessWidget {
   const ViewProductScreen({Key? key}) : super(key: key);
+
   ProductItem get item => Get.arguments;
 
   @override
@@ -78,7 +83,10 @@ class ViewProductScreen extends StatelessWidget {
               ),
               SliverToBoxAdapter(
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 12, right: 12, top: 24),
+                  padding: const EdgeInsets.only(
+                    left: 12,
+                    right: 12,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
@@ -92,55 +100,23 @@ class ViewProductScreen extends StatelessWidget {
                             fontWeight: FontWeight.w500,
                             color: Colors.black,
                           ),
-                          const Icon(
-                            Icons.favorite_outline_sharp,
-                            color: Colors.black,
-                            size: 20,
-                          )
+                          IconButton(
+                              onPressed: () {},
+                              color: Colors.black,
+                              icon: const Icon(
+                                Icons.favorite_outline_sharp,
+                                color: Colors.black,
+                                size: 20,
+                              )),
                         ],
                       ),
                       const SizedBox(
                         height: 8,
                       ),
-                      Row(
-                        children: [
-                          Container(
-                            width: SizeConfig.width! * 0.2,
-                            height: 20,
-                            alignment: Alignment.center,
-                            decoration: BoxDecoration(
-                                shape: BoxShape.rectangle,
-                                color: Colors.grey.shade300,
-                                borderRadius: BorderRadius.circular(5)),
-                            child: const CustomTextView(
-                                text: '6.5 sold',
-                                fontSize: 14,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.black),
-                          ),
-                          const SizedBox(
-                            width: 20,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [
-                              const Padding(
-                                padding: EdgeInsets.only(bottom: 3),
-                                child: Icon(
-                                  Icons.star_half_rounded,
-                                  color: Colors.black,
-                                  size: 22,
-                                ),
-                              ),
-                              CustomTextView(
-                                  text: '4.5 (50034 reviews)',
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.grey.shade700),
-                            ],
-                          ),
-                        ],
+                      const CustomProductRate(
+                        sell: 7.5,
+                        rate: 4.5,
+                        reviews: 50034,
                       ),
                       const SizedBox(
                         height: 12,
@@ -175,49 +151,26 @@ class ViewProductScreen extends StatelessWidget {
                           fontWeight: FontWeight.w500,
                           color: Colors.black),
                       ColorSelector(
-                        availableColors: [Color(0xFFDB3022),Color(0xFF2AA952),Color(0xFF9B9B9B)],
-                        selectedColors: [Color(0xFFDB3022),Color(0xFF2AA952),Color(0xFF9B9B9B)],
+                        availableColors: [
+                          Color(0xFFDB3022),
+                          Color(0xFF2AA952),
+                          Color(0xFF9B9B9B)
+                        ],
+                        selectedColors: [
+                          Color(0xFFDB3022),
+                          Color(0xFF2AA952),
+                          Color(0xFF9B9B9B)
+                        ],
                         label: "select color",
-                        onClick: (newColor){
-
-                        },
+                        onClick: (newColor) {},
                       ),
                       const SizedBox(
                         height: 16,
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          const CustomTextView(
-                              text: 'Quality',
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black),
-                          const SizedBox(
-                            width: 12,
-                          ),
-                          Container(
-                            width: SizeConfig.width! * 0.35,
-                            height: SizeConfig.height! * 0.05,
-                            decoration: ShapeDecoration(
-                              color: Colors.grey.shade300,
-                              shape: const StadiumBorder(),
-                            ),
-                            child: Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                IconButton(onPressed: (){},color: Colors.black,icon: const Icon(Icons.remove,size: 16,),),
-                                const CustomTextView(
-                                    text: '2',
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w500,
-                                    color: Colors.black),
-                                IconButton(onPressed: (){},color: Colors.black,icon: const Icon(Icons.add,size: 16,),)
-                              ],
-                            ),
-                          )
-                        ],
+                      CustomProductCount(
+                        countNumber: 2,
+                        remove: () {},
+                        add: () {},
                       ),
                       const SizedBox(
                         height: 16,
@@ -226,6 +179,13 @@ class ViewProductScreen extends StatelessWidget {
                         width: SizeConfig.width,
                         height: 1,
                         color: Colors.grey,
+                      ),
+                      const SizedBox(
+                        height: 12,
+                      ),
+                      CustomProductFooter(
+                        price: item.price,
+                        addCart: () {},
                       ),
                     ],
                   ),
