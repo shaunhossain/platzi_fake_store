@@ -162,7 +162,7 @@ class HomeScreen extends StatelessWidget {
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
                         return ProductViewItem(productItem: controller.allProduct[index], onTap: () {
-                          Get.toNamed(AppRoutes.viewProductScreen);
+                          Get.toNamed(AppRoutes.viewProductScreen,arguments: controller.allProduct[index]);
                         },);
                       },
                       childCount: controller.allProduct.length,
