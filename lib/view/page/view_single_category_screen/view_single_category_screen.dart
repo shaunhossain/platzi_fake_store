@@ -22,7 +22,7 @@ class _ViewSingleCategoryScreenState extends State<ViewSingleCategoryScreen> {
   initState() {
     super.initState();
     final controller = Get.find<ViewSingleCategoryController>();
-    controller.getAllProductsOfCategory(categoryId: category.id);
+    controller.getCategoryId(id: category.id.toString());
   }
 
   @override
@@ -52,34 +52,31 @@ class _ViewSingleCategoryScreenState extends State<ViewSingleCategoryScreen> {
               body: Padding(
                 padding: const EdgeInsets.only(left: 12, right: 12, top: 8),
                 child: Obx(
-                  () => controller.allProductOfCategory.isEmpty
-                      ? const Center(
-                          child: CircularProgressIndicator(),
-                        )
-                      : GridView.builder(
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 20,
-                            childAspectRatio: 0.79,
-                          ),
-                          itemCount: controller.allProductOfCategory.length,
-                          itemBuilder: (BuildContext ctx, index) {
-                            return ProductViewItem(
-                              productItem:
-                                  controller.allProductOfCategory[index],
+                  () => GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 20,
+                        childAspectRatio: 0.79,
+                      ),
+                      controller: controller.categoryProductListController,
+                      itemCount: controller.allProductOfCategory.length,
+                      itemBuilder: (BuildContext ctx, index) {
+                        return Obx(() => ProductViewItem(
+                              productItem: controller.allProductOfCategory[index],
                               onTap: () {
                                 Get.toNamed(AppRoutes.viewProductScreen,
                                     arguments:
                                         controller.allProductOfCategory[index]);
                               },
                               onSave: () {
-
+                                controller.likedProduct(controller.allProductOfCategory[index]);
                               },
-                              isLiked: false,
-                            );
-                          }),
+                              isLiked: controller.likedProductList.contains(controller.allProductOfCategory[index].id) ? true : false,
+                            ),
+                        );
+                      }),
                 ),
               )));
     });

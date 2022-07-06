@@ -5,7 +5,6 @@ import 'package:platzi_fake_store/model/product/product_item.dart';
 import 'package:platzi_fake_store/utils/size_config.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
 import 'package:platzi_fake_store/view/components/widget/view_product/color_selector.dart';
-import 'package:platzi_fake_store/view/components/widget/view_product/custom_add_cart_button.dart';
 import 'package:platzi_fake_store/view/components/widget/view_product/custom_product_count.dart';
 import 'package:platzi_fake_store/view/components/widget/view_product/custom_product_footer.dart';
 import 'package:platzi_fake_store/view/components/widget/view_product/custom_product_rate.dart';

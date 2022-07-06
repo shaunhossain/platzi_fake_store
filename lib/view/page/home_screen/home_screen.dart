@@ -26,7 +26,7 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.only(left: 12, right: 12, top: 8),
             child: CustomScrollView(
                 physics: const BouncingScrollPhysics(),
-                controller: controller.productController,
+                controller: controller.productListController,
                 slivers: [
                   SliverAppBar(
                     backgroundColor: Colors.white,

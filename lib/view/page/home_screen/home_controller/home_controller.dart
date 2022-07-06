@@ -1,3 +1,4 @@
+import 'dart:developer';
 import 'dart:io';
 
 import 'package:carousel_slider/carousel_options.dart';
@@ -13,7 +14,6 @@ import 'package:platzi_fake_store/view/page/home_screen/home_connect/home_connec
 import 'package:platzi_fake_store/view/services/initial_controller/initial_controller.dart';
 
 class HomeController extends GetxController {
-  ScrollController productController = ScrollController();
   final activeIndex = 0.obs;
   final isButtonPress = false.obs;
   final RxString dataFetchingError = ''.obs;
@@ -25,6 +25,13 @@ class HomeController extends GetxController {
   var showShimmerEffect = false.obs;
   var likedProductList = <int>[].obs;
 
+  /// initially the current page offset is 0
+  var currentPageOffset = 0.obs;
+
+  /// control data pull request from this controller
+  /// the ScrollController is for listview control
+  ScrollController productListController = ScrollController();
+
   final IHomeProvider _homeProvider = IHomeProvider();
   final InitialController _controller = Get.find<InitialController>();
 
@@ -32,7 +39,21 @@ class HomeController extends GetxController {
   void onInit() async {
     super.onInit();
     getAllCategory();
-    getAllProduct();
+    getSomeProduct();
+    scrollingUpdate();
+  }
+
+  scrollingUpdate() async {
+    productListController.addListener(() {
+      if (productListController.position.maxScrollExtent ==
+          productListController.position.pixels) {
+        log('scroll');
+        if (currentPageOffset.value > 0) {
+          getAllProduct(offset: currentPageOffset.value);
+        }
+        currentPageOffset.value += 10;
+      }
+    });
   }
 
   void getAllCategory() {
@@ -61,11 +82,33 @@ class HomeController extends GetxController {
     }
   }
 
-  void getAllProduct() {
+  void getAllProduct({required int offset}) {
     if (_controller.connectionType.value == ConnectionType.mobile ||
         _controller.connectionType.value == ConnectionType.wifi) {
       try {
-        _homeProvider.getAllProducts().then((value) {
+        _homeProvider.getAllProducts(offset: offset).then((value) {
+          try {
+            final List<ProductItem> response = productItemFromJson(value);
+            allProduct.addAll(response);
+          } on Exception catch (e) {
+            dataFetchingError.value = "$e";
+          }
+        }, onError: (error) {
+          dataFetchingError.value = "$error";
+        });
+      } on SocketException {
+        dataFetchingError.value = "No internet connection";
+      }
+    } else {
+      dataFetchingError.value = "No internet connection";
+    }
+  }
+
+  void getSomeProduct() {
+    if (_controller.connectionType.value == ConnectionType.mobile ||
+        _controller.connectionType.value == ConnectionType.wifi) {
+      try {
+        _homeProvider.getSomeProducts().then((value) {
           try {
             final List<ProductItem> response = productItemFromJson(value);
             allProduct = response;
@@ -75,7 +118,6 @@ class HomeController extends GetxController {
                   offerMassage: 'Today\'s Special',
                   item: item));
             }
-            //log(response.first.title);
           } on Exception catch (e) {
             dataFetchingError.value = "$e";
           }
@@ -95,12 +137,11 @@ class HomeController extends GetxController {
     update();
   }
 
-  void likedProduct(ProductItem productItem){
-    if(!likedProductList.value.contains(productItem.id)){
-      //likedProductList.remove(productItem.id);
-      likedProductList.value.add(productItem.id);
-    }else{
-      likedProductList.value.remove(productItem.id);
+  void likedProduct(ProductItem productItem) {
+    if (!likedProductList.contains(productItem.id)) {
+      likedProductList.add(productItem.id);
+    } else {
+      likedProductList.remove(productItem.id);
     }
   }
 }
