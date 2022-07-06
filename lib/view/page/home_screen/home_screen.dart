@@ -173,13 +173,17 @@ class HomeScreen extends StatelessWidget {
                   SliverGrid(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
-                        return ProductViewItem(
-                          productItem: controller.allProduct[index],
-                          onTap: () {
-                            Get.toNamed(AppRoutes.viewProductScreen,
-                                arguments: controller.allProduct[index]);
-                          },
-                        );
+                        return Obx(() => ProductViewItem(
+                              productItem: controller.allProduct[index],
+                              onTap: () {
+                                Get.toNamed(AppRoutes.viewProductScreen,
+                                    arguments: controller.allProduct[index]);
+                              },
+                              onSave: (){
+                                controller.likedProduct(controller.allProduct[index]);
+                              },
+                              isLiked: controller.likedProductList.contains(controller.allProduct[index].id) ? true : false,
+                            ));
                       },
                       childCount: controller.allProduct.length,
                     ),

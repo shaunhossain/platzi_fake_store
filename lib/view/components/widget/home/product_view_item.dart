@@ -5,10 +5,17 @@ import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_text_view_ellipsis.dart';
 
 class ProductViewItem extends StatelessWidget {
-  const ProductViewItem({Key? key, required this.productItem, required this.onTap})
+  const ProductViewItem(
+      {Key? key,
+      required this.productItem,
+      required this.onTap,
+      required this.onSave,
+      required this.isLiked})
       : super(key: key);
   final ProductItem productItem;
   final Function() onTap;
+  final Function() onSave;
+  final bool isLiked;
 
   @override
   Widget build(BuildContext context) {
@@ -42,45 +49,90 @@ class ProductViewItem extends StatelessWidget {
                       Positioned(
                           right: 8,
                           top: 8,
-                          child: Container(
-                              width: 25,
-                              height: 25,
-                              decoration: const BoxDecoration(
-                                  shape: BoxShape.circle, color: Colors.black),
-                              child: const Icon(Icons.favorite_outline_sharp,color: Colors.white,size: 16,)))
+                          child: GestureDetector(
+                            onTap: onSave,
+                            child: Container(
+                                width: 25,
+                                height: 25,
+                                decoration: BoxDecoration(
+                                    shape: BoxShape.circle,
+                                    border: Border.all(
+                                      width: 0.5
+                                    ),
+                                    color: isLiked == false
+                                        ? Colors.white
+                                        : Colors.black),
+                                child: Icon(
+                                  Icons.favorite_outline_sharp,
+                                  color: isLiked == false
+                                      ? Colors.black
+                                      : Colors.white,
+                                  size: 16,
+                                )),
+                          ))
                     ],
                   )),
             ),
-            const SizedBox(height: 10,),
-            CustomTextViewEllipsis(text: productItem.title, fontSize: 18, fontWeight: FontWeight.w500, color: Colors.black),
-            const SizedBox(height: 8,),
+            const SizedBox(
+              height: 10,
+            ),
+            CustomTextViewEllipsis(
+                text: productItem.title,
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                color: Colors.black),
+            const SizedBox(
+              height: 8,
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 const Padding(
                   padding: EdgeInsets.only(bottom: 3),
-                  child: Icon(Icons.star_half_rounded,color: Colors.black,size: 22,),
+                  child: Icon(
+                    Icons.star_half_rounded,
+                    color: Colors.black,
+                    size: 22,
+                  ),
                 ),
-                const CustomTextView(text: '4.5', fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),
-                const SizedBox(width: 10,),
+                const CustomTextView(
+                    text: '4.5',
+                    fontSize: 16,
+                    fontWeight: FontWeight.w400,
+                    color: Colors.black),
+                const SizedBox(
+                  width: 10,
+                ),
                 Container(
                   width: 1,
                   height: 14,
                   color: Colors.black,
                 ),
-                const SizedBox(width: 10,),
+                const SizedBox(
+                  width: 10,
+                ),
                 Container(
-                    width: SizeConfig.width! * 0.15,
-                    height: 20,
-                    alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        shape: BoxShape.rectangle, color: Colors.grey.shade300,
-                    borderRadius: BorderRadius.circular(5)),
-                    child: const CustomTextView(text: '6.5 sold', fontSize: 14, fontWeight: FontWeight.w400, color: Colors.black),)
+                  width: SizeConfig.width! * 0.15,
+                  height: 20,
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      shape: BoxShape.rectangle,
+                      color: Colors.grey.shade300,
+                      borderRadius: BorderRadius.circular(5)),
+                  child: const CustomTextView(
+                      text: '6.5 sold',
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.black),
+                )
               ],
             ),
-            CustomTextView(text: '\u0024${productItem.price}', fontSize: 16, fontWeight: FontWeight.w400, color: Colors.black),
+            CustomTextView(
+                text: '\u0024${productItem.price}',
+                fontSize: 16,
+                fontWeight: FontWeight.w400,
+                color: Colors.black),
           ],
         ),
       ),

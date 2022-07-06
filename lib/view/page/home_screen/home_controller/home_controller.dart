@@ -23,6 +23,7 @@ class HomeController extends GetxController {
   var categoryProgressBar = true.obs;
   var productProgressBar = true.obs;
   var showShimmerEffect = false.obs;
+  var likedProductList = <int>[].obs;
 
   final IHomeProvider _homeProvider = IHomeProvider();
   final InitialController _controller = Get.find<InitialController>();
@@ -92,5 +93,14 @@ class HomeController extends GetxController {
   void onPageChange(int index, CarouselPageChangedReason reason) {
     activeIndex.value = index;
     update();
+  }
+
+  void likedProduct(ProductItem productItem){
+    if(!likedProductList.value.contains(productItem.id)){
+      //likedProductList.remove(productItem.id);
+      likedProductList.value.add(productItem.id);
+    }else{
+      likedProductList.value.remove(productItem.id);
+    }
   }
 }

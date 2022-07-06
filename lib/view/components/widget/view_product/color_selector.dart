@@ -3,13 +3,10 @@ import 'package:get/get.dart';
 import 'package:platzi_fake_store/utils/size_config.dart';
 import 'package:platzi_fake_store/view/page/view_product_screen/view_product_controller/view_product_controller.dart';
 
-
 class ColorSelector extends StatelessWidget {
   final List<Color> availableColors;
 
-  const ColorSelector(
-      {Key? key,
-      required this.availableColors})
+  const ColorSelector({Key? key, required this.availableColors})
       : super(key: key);
 
   @override
@@ -30,11 +27,12 @@ class ColorSelector extends StatelessWidget {
 
   List<Widget> buildColors(BuildContext context) {
     var colorWidgets = <Widget>[];
-    for (var i = 0; i <availableColors.length; i++) {
+    for (var i = 0; i < availableColors.length; i++) {
       colorWidgets.add(
         InkWell(
-          onTap: ((){
-            Get.find<ViewProductController>().selectProductColor(availableColors[i]);
+          onTap: (() {
+            Get.find<ViewProductController>()
+                .selectProductColor(availableColors[i]);
           }),
           child: buildColorWidget(availableColors[i], context),
         ),
@@ -52,14 +50,14 @@ class ColorSelector extends StatelessWidget {
           borderRadius: const BorderRadius.all(
             Radius.circular(22),
           ),
-          border: Get.find<ViewProductController>().selectedColor==color
+          border: Get.find<ViewProductController>().selectedColor == color
               ? Border.all(color: _theme.colorScheme.secondary)
               : null,
         ),
-        padding: EdgeInsets.all(4),
+        padding: const EdgeInsets.all(4),
         child: Container(
           decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(
+              borderRadius: const BorderRadius.all(
                 Radius.circular(18),
               ),
               border: Border.all(color: _theme.primaryColorLight),
