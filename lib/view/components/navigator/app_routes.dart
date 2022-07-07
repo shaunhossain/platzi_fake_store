@@ -19,6 +19,7 @@ import 'package:platzi_fake_store/view/page/my_wishlist_screen/my_wishlist_scree
 import 'package:platzi_fake_store/view/page/notification_screen/notification_binding/notification_binding.dart';
 import 'package:platzi_fake_store/view/page/notification_screen/notification_screen.dart';
 import 'package:platzi_fake_store/view/page/order_screen/order_screen.dart';
+import 'package:platzi_fake_store/view/page/profile_screen/profile_binding/profile_binding.dart';
 import 'package:platzi_fake_store/view/page/profile_screen/profile_screen.dart';
 import 'package:platzi_fake_store/view/page/search_product_screen/search_product_binding/search_product_binding.dart';
 import 'package:platzi_fake_store/view/page/search_product_screen/search_product_screen.dart';
