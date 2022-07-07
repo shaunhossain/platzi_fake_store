@@ -23,7 +23,7 @@ class ProductItem {
   final ProductCategory? category;
   final List<String>? images;
 
-  factory ProductItem.fromJson(Map<String, dynamic> json) => ProductItem(
+  factory ProductItem.fromJson(Map<dynamic , dynamic> json) => ProductItem(
     id: json["id"] == null ? null : json["id"],
     title: json["title"] == null ? null : json["title"],
     price: json["price"] == null ? null : json["price"],

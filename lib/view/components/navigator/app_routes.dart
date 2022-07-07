@@ -32,7 +32,6 @@ import 'package:platzi_fake_store/view/page/view_single_carousel_screen/view_sin
 import 'package:platzi_fake_store/view/page/view_single_category_screen/view_single_category_binding/view_single_category_binding.dart';
 import 'package:platzi_fake_store/view/page/view_single_category_screen/view_single_category_screen.dart';
 import 'package:platzi_fake_store/view/page/wallet_screen/wallet_screen.dart';
-
 import '../../page/view_single_carousel_screen/view_single_carousel_binding/view_single_carousel_binding.dart';
 
 
@@ -90,7 +89,7 @@ class AppPages {
         transition: Transition.rightToLeft),
     GetPage(
         name: AppRoutes.viewSingleCategoryScreen,
-        page: () => ViewSingleCategoryScreen(),
+        page: () => const ViewSingleCategoryScreen(),
         binding: ViewSingleCategoryBinding(),
         transition: Transition.rightToLeft),
     GetPage(

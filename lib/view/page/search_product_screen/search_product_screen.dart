@@ -4,7 +4,6 @@ import 'package:platzi_fake_store/utils/size_config.dart';
 import 'package:platzi_fake_store/utils/store_user_sessions/store_user_sessions.dart';
 import 'package:platzi_fake_store/view/components/navigator/app_pages.dart';
 import 'package:platzi_fake_store/view/components/widget/home/custom_category_item.dart';
-import 'package:platzi_fake_store/view/components/widget/navigate_back_button.dart';
 import 'package:platzi_fake_store/view/components/widget/search_product/custom_search_bar_field.dart';
 
 class SearchProductScreen extends StatelessWidget {

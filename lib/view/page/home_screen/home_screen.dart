@@ -26,23 +26,28 @@ class HomeScreen extends StatelessWidget {
             padding: const EdgeInsets.only(left: 12, right: 12, top: 8),
             child: CustomScrollView(
                 physics: const BouncingScrollPhysics(),
-                controller: controller.productController,
+                controller: controller.productListController,
                 slivers: [
                   SliverAppBar(
                     backgroundColor: Colors.white,
-                    expandedHeight: SizeConfig.height!*0.18,
-                    collapsedHeight: SizeConfig.height!*0.18,
+                    automaticallyImplyLeading: false,
+                    expandedHeight: SizeConfig.height! * 0.18,
+                    collapsedHeight: SizeConfig.height! * 0.18,
                     flexibleSpace: Column(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        HomeScreenHeader(onTapProfilePhoto: () {
-                          Get.toNamed(AppRoutes.editProfileScreen);
-                        }, onPressNotificationButton: () {
-                          Get.toNamed(AppRoutes.notificationScreen);
-                        }, onPressWishList: () {
-                          Get.toNamed(AppRoutes.myWishlistScreen);
-                        },),
+                        HomeScreenHeader(
+                          onTapProfilePhoto: () {
+                            Get.toNamed(AppRoutes.editProfileScreen);
+                          },
+                          onPressNotificationButton: () {
+                            Get.toNamed(AppRoutes.notificationScreen);
+                          },
+                          onPressWishList: () {
+                            Get.toNamed(AppRoutes.myWishlistScreen);
+                          },
+                        ),
                         CustomSearchField(
                           spacing: 0,
                           hint: 'Search',
@@ -85,7 +90,13 @@ class HomeScreen extends StatelessWidget {
                               items: controller.offerList.map((item) {
                                 return Builder(
                                   builder: (BuildContext context) {
-                                    return OfferItem(offerDetails: item,);
+                                    return OfferItem(
+                                      offerDetails: item,
+                                      onTap: () {
+                                        Get.toNamed(AppRoutes.viewProductScreen,
+                                            arguments: item.item);
+                                      },
+                                    );
                                   },
                                 );
                               }).toList(),
@@ -97,9 +108,7 @@ class HomeScreen extends StatelessWidget {
                                 count: controller.offerList.length,
                                 duration: const Duration(microseconds: 500),
                                 effect: const ExpandingDotsEffect(
-                                  dotWidth: 5,
-                                  dotHeight: 5
-                                ),
+                                    dotWidth: 5, dotHeight: 5),
                               ),
                             ),
                           ],
@@ -117,7 +126,8 @@ class HomeScreen extends StatelessWidget {
                             title: controller.productCategory[index].name,
                             icon: controller.productCategory[index].icon,
                             onTap: () {
-                              Get.toNamed(AppRoutes.viewSingleCategoryScreen, arguments: controller.productCategory[index]);
+                              Get.toNamed(AppRoutes.viewSingleCategoryScreen,
+                                  arguments: controller.productCategory[index]);
                             });
                       },
                       childCount: controller.productCategory.length,
@@ -153,7 +163,9 @@ class HomeScreen extends StatelessWidget {
                                       padding: 10,
                                       buttonColor: Colors.white,
                                       onPress: () {
-                                        Get.toNamed(AppRoutes.viewSingleCategoryScreen, arguments: item);
+                                        Get.toNamed(
+                                            AppRoutes.viewSingleCategoryScreen,
+                                            arguments: item);
                                       },
                                     )))
                                 .toList(),
@@ -161,9 +173,17 @@ class HomeScreen extends StatelessWidget {
                   SliverGrid(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
-                        return ProductViewItem(productItem: controller.allProduct[index], onTap: () {
-                          Get.toNamed(AppRoutes.viewProductScreen);
-                        },);
+                        return Obx(() => ProductViewItem(
+                              productItem: controller.allProduct[index],
+                              onTap: () {
+                                Get.toNamed(AppRoutes.viewProductScreen,
+                                    arguments: controller.allProduct[index]);
+                              },
+                              onSave: (){
+                                controller.likedProduct(controller.allProduct[index]);
+                              },
+                              isLiked: controller.likedProductList.contains(controller.allProduct[index].id) ? true : false,
+                            ));
                       },
                       childCount: controller.allProduct.length,
                     ),

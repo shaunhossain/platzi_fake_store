@@ -1,7 +1,8 @@
+import 'package:platzi_fake_store/model/product/product_item.dart';
+
 class Offer{
-  Offer({required this.offerMassage, required this.description, required this.image, required this.offerPercentage});
+  Offer({required this.offerMassage, required this.item,required this.offerPercentage});
   final String offerPercentage;
   final String offerMassage;
-  final String description;
-  final String image;
+  final ProductItem item;
 }

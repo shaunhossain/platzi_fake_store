@@ -22,7 +22,7 @@ class _ViewSingleCategoryScreenState extends State<ViewSingleCategoryScreen> {
   initState() {
     super.initState();
     final controller = Get.find<ViewSingleCategoryController>();
-    controller.getAllProductsOfCategory(categoryId: category.id);
+    controller.getCategoryId(id: category.id.toString());
   }
 
   @override
@@ -31,47 +31,54 @@ class _ViewSingleCategoryScreenState extends State<ViewSingleCategoryScreen> {
     return GetBuilder<ViewSingleCategoryController>(builder: (controller) {
       return SafeArea(
           child: Scaffold(
-        appBar: AppBar(
-          iconTheme: const IconThemeData(color: Colors.black),
-          title: CustomTextView(
-              text: category.name,
-              fontSize: SizeConfig.textScaleFactor! * 24,
-              fontWeight: FontWeight.w500,
-              color: Colors.black),
-          actions: [
-            IconButton(
-                onPressed: () {
-                  Get.toNamed(AppRoutes.searchProductScreen);
-                },
-                icon: const Icon(Icons.search_rounded))
-          ],
-          backgroundColor: Colors.white,
-          bottomOpacity: 0.0,
-          elevation: 0.3,
-        ),
-        body: Padding(
-          padding: const EdgeInsets.only(left: 12, right: 12, top: 8),
-          child: Obx(()=> controller.allProductOfCategory.isEmpty
-              ? const Center(
-            child: CircularProgressIndicator(),
-          )
-              : GridView.builder(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                mainAxisSpacing: 10,
-                crossAxisSpacing: 20,
-                childAspectRatio: 0.79,),
-              itemCount: controller.allProductOfCategory.length,
-              itemBuilder: (BuildContext ctx, index) {
-                return ProductViewItem(
-                  productItem: controller.allProductOfCategory[index],
-                  onTap: () {
-                    Get.toNamed(AppRoutes.viewProductScreen);
-                  },
-                );
-              }),),
-        )
-      ));
+              appBar: AppBar(
+                iconTheme: const IconThemeData(color: Colors.black),
+                title: CustomTextView(
+                    text: category.name,
+                    fontSize: SizeConfig.textScaleFactor! * 24,
+                    fontWeight: FontWeight.w500,
+                    color: Colors.black),
+                actions: [
+                  IconButton(
+                      onPressed: () {
+                        Get.toNamed(AppRoutes.searchProductScreen);
+                      },
+                      icon: const Icon(Icons.search_rounded))
+                ],
+                backgroundColor: Colors.white,
+                bottomOpacity: 0.0,
+                elevation: 0.3,
+              ),
+              body: Padding(
+                padding: const EdgeInsets.only(left: 12, right: 12, top: 8),
+                child: Obx(
+                  () => GridView.builder(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 10,
+                        crossAxisSpacing: 20,
+                        childAspectRatio: 0.79,
+                      ),
+                      controller: controller.categoryProductListController,
+                      itemCount: controller.allProductOfCategory.length,
+                      itemBuilder: (BuildContext ctx, index) {
+                        return Obx(() => ProductViewItem(
+                              productItem: controller.allProductOfCategory[index],
+                              onTap: () {
+                                Get.toNamed(AppRoutes.viewProductScreen,
+                                    arguments:
+                                        controller.allProductOfCategory[index]);
+                              },
+                              onSave: () {
+                                controller.likedProduct(controller.allProductOfCategory[index]);
+                              },
+                              isLiked: controller.likedProductList.contains(controller.allProductOfCategory[index].id) ? true : false,
+                            ),
+                        );
+                      }),
+                ),
+              )));
     });
   }
 }

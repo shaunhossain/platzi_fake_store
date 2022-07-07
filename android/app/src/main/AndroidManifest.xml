@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.shaunhossain.platzi_fake_store">
    <application
-        android:label="platzi_fake_store"
+        android:label="Platzi Fake Store"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
