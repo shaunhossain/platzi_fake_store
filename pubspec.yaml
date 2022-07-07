@@ -33,6 +33,7 @@ dependencies:
   shimmer: ^2.0.0
   smooth_page_indicator: ^1.0.0+2
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
