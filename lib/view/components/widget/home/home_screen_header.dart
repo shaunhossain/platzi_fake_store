@@ -1,9 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:platzi_fake_store/model/profile/profile.dart';
+import 'package:platzi_fake_store/utils/endpoint.dart';
 import 'package:platzi_fake_store/utils/size_config.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
 
 class HomeScreenHeader extends StatelessWidget {
-  const HomeScreenHeader({Key? key, required this.onTapProfilePhoto, required this.onPressNotificationButton, required this.onPressWishList}) : super(key: key);
+  const HomeScreenHeader(
+      {Key? key,
+      required this.onTapProfilePhoto,
+      required this.onPressNotificationButton,
+      required this.onPressWishList,
+      required this.profileInfo})
+      : super(key: key);
+  final Profile profileInfo;
   final Function() onTapProfilePhoto;
   final Function() onPressNotificationButton;
   final Function() onPressWishList;
@@ -33,7 +42,7 @@ class HomeScreenHeader extends StatelessWidget {
                 onTap: onTapProfilePhoto,
                 child: Card(
                   elevation: 0.1,
-                  shape:  const StadiumBorder(
+                  shape: const StadiumBorder(
                     side: BorderSide(
                       color: Colors.white,
                       width: 1.5,
@@ -41,23 +50,31 @@ class HomeScreenHeader extends StatelessWidget {
                   ),
                   child: ClipOval(
                       clipBehavior: Clip.antiAlias,
-                      child: Image.asset('assets/profile.jpeg')
-                  ),
+                      child: Image.network(
+                       profileInfo.avatar,
+                        fit: BoxFit.cover,
+                        errorBuilder: (BuildContext context, Object exception,
+                            StackTrace? stackTrace) {
+                          return Image.network(demoProfilePic);
+                        },
+                      ),),
                 ),
               ),
             ),
-            const SizedBox(width: 10,),
+            const SizedBox(
+              width: 10,
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: const [
-                CustomTextView(
+              children: [
+                const CustomTextView(
                   text: 'Good Morning',
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
                   color: Colors.grey,
                 ),
                 CustomTextView(
-                  text: 'Andrew Ansley',
+                  text: profileInfo.name,
                   fontSize: 16,
                   fontWeight: FontWeight.w600,
                   color: Colors.black,
@@ -71,12 +88,20 @@ class HomeScreenHeader extends StatelessWidget {
           child: Row(
             children: [
               IconButton(
-                icon: Icon(Icons.notifications_active_outlined,color: Colors.grey.shade700,size: 22,),
+                icon: Icon(
+                  Icons.notifications_active_outlined,
+                  color: Colors.grey.shade700,
+                  size: 22,
+                ),
                 padding: EdgeInsets.zero,
                 onPressed: onPressNotificationButton,
               ),
               IconButton(
-                icon: Icon(Icons.favorite_border,color: Colors.grey.shade700,size: 22,),
+                icon: Icon(
+                  Icons.favorite_border,
+                  color: Colors.grey.shade700,
+                  size: 22,
+                ),
                 padding: EdgeInsets.zero,
                 onPressed: onPressWishList,
               )
