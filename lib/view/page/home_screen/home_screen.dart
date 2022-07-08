@@ -11,6 +11,7 @@ import 'package:platzi_fake_store/view/components/widget/home/custom_text_span_b
 import 'package:platzi_fake_store/view/components/widget/home/offer_item.dart';
 import 'package:platzi_fake_store/view/components/widget/home/product_view_item.dart';
 import 'package:platzi_fake_store/view/page/home_screen/home_controller/home_controller.dart';
+import 'package:platzi_fake_store/view/page/profile_screen/profile_controller/profile_controller.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -37,17 +38,20 @@ class HomeScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        HomeScreenHeader(
-                          onTapProfilePhoto: () {
-                            Get.toNamed(AppRoutes.editProfileScreen);
-                          },
-                          onPressNotificationButton: () {
-                            Get.toNamed(AppRoutes.notificationScreen);
-                          },
-                          onPressWishList: () {
-                            Get.toNamed(AppRoutes.myWishlistScreen);
-                          },
-                        ),
+                        Obx(() {
+                          return controller.profileInfo.isNotEmpty ?
+                            HomeScreenHeader(
+                            onTapProfilePhoto: () {
+                              Get.toNamed(AppRoutes.editProfileScreen);
+                            },
+                            onPressNotificationButton: () {
+                              Get.toNamed(AppRoutes.notificationScreen);
+                            },
+                            onPressWishList: () {
+                              Get.toNamed(AppRoutes.myWishlistScreen);
+                            }, profileInfo: controller.profileInfo.first,
+                          ) : const CircularProgressIndicator();
+                        }),
                         CustomSearchField(
                           spacing: 0,
                           hint: 'Search',
@@ -82,7 +86,7 @@ class HomeScreen extends StatelessWidget {
                                   autoPlay: true,
                                   autoPlayInterval: const Duration(seconds: 3),
                                   autoPlayAnimationDuration:
-                                      const Duration(seconds: 2),
+                                  const Duration(seconds: 2),
                                   autoPlayCurve: Curves.fastOutSlowIn,
                                   enlargeCenterPage: true,
                                   scrollDirection: Axis.horizontal,
@@ -121,7 +125,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SliverGrid(
                     delegate: SliverChildBuilderDelegate(
-                      (context, index) {
+                          (context, index) {
                         return CustomCategoryItem(
                             title: controller.productCategory[index].name,
                             icon: controller.productCategory[index].icon,
@@ -133,7 +137,7 @@ class HomeScreen extends StatelessWidget {
                       childCount: controller.productCategory.length,
                     ),
                     gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                    const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4,
                       mainAxisSpacing: 12,
                       crossAxisSpacing: 12,
@@ -156,8 +160,9 @@ class HomeScreen extends StatelessWidget {
                           child: ListView(
                             scrollDirection: Axis.horizontal,
                             children: controller.productCategory
-                                .map((item) => FittedBox(
-                                        child: CustomCategoryButton(
+                                .map((item) =>
+                                FittedBox(
+                                    child: CustomCategoryButton(
                                       title: item.name,
                                       textColor: Colors.black,
                                       padding: 10,
@@ -172,23 +177,28 @@ class HomeScreen extends StatelessWidget {
                           ))),
                   SliverGrid(
                     delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        return Obx(() => ProductViewItem(
+                          (context, index) {
+                        return Obx(() =>
+                            ProductViewItem(
                               productItem: controller.allProduct[index],
                               onTap: () {
                                 Get.toNamed(AppRoutes.viewProductScreen,
                                     arguments: controller.allProduct[index]);
                               },
-                              onSave: (){
-                                controller.likedProduct(controller.allProduct[index]);
+                              onSave: () {
+                                controller.likedProduct(
+                                    controller.allProduct[index]);
                               },
-                              isLiked: controller.likedProductList.contains(controller.allProduct[index].id) ? true : false,
+                              isLiked: controller.likedProductList.contains(
+                                  controller.allProduct[index].id)
+                                  ? true
+                                  : false,
                             ));
                       },
                       childCount: controller.allProduct.length,
                     ),
                     gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
+                    const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 2,
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 20,

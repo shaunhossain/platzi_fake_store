@@ -7,6 +7,7 @@ class ViewProductController extends GetxController {
   final productQuantity = 1.obs;
   Color? selectedColor;
   String? selectedSize;
+  var isLikedProduct = false.obs;
   List<Color> availableColors = [
     Color(0xFFDB3022),
     Color(0xFF2AA952),
@@ -44,5 +45,9 @@ class ViewProductController extends GetxController {
   void selectProductSize(String size){
     selectedSize = size;
     update();
+  }
+
+  void likedProduct() {
+    isLikedProduct.value = !isLikedProduct.value;
   }
 }

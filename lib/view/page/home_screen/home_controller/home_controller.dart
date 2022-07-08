@@ -8,8 +8,10 @@ import 'package:platzi_fake_store/model/category/category.dart';
 import 'package:platzi_fake_store/model/category/item_category.dart';
 import 'package:platzi_fake_store/model/offer/offer.dart';
 import 'package:platzi_fake_store/model/product/product_item.dart';
+import 'package:platzi_fake_store/model/profile/profile.dart';
 import 'package:platzi_fake_store/utils/conversion.dart';
 import 'package:platzi_fake_store/utils/network_type/connection_type.dart';
+import 'package:platzi_fake_store/utils/store_user_sessions/store_user_sessions.dart';
 import 'package:platzi_fake_store/view/page/home_screen/home_connect/home_connect.dart';
 import 'package:platzi_fake_store/view/services/initial_controller/initial_controller.dart';
 
@@ -25,6 +27,9 @@ class HomeController extends GetxController {
   var showShimmerEffect = false.obs;
   var likedProductList = <int>[].obs;
 
+  final _storage = StoreUserSessions();
+  var profileInfo = <Profile>[].obs;
+
   /// initially the current page offset is 0
   var currentPageOffset = 0.obs;
 
@@ -38,6 +43,10 @@ class HomeController extends GetxController {
   @override
   void onInit() async {
     super.onInit();
+    String? token = await _storage.getToken();
+    Future.delayed( Duration.zero,(){
+      getUserInfo(token: token!);
+    });
     getAllCategory();
     getSomeProduct();
     scrollingUpdate();
@@ -129,6 +138,29 @@ class HomeController extends GetxController {
       }
     } else {
       dataFetchingError.value = "No internet connection";
+    }
+  }
+
+  Future<void> getUserInfo({required String token}) async {
+    if(_controller.connectionType.value == ConnectionType.mobile || _controller.connectionType.value == ConnectionType.wifi){
+      try {
+        _homeProvider.getUserProfileInfo(token: token).then((value){
+          try {
+            final Profile response = profileFromJson(value);
+            profileInfo.add(response);
+            log("profile name -> ${response.name}");
+
+          } on Exception catch (e) {
+            dataFetchingError.value ="$e";
+          }
+        }, onError: (error){
+          dataFetchingError.value ="$error";
+        });
+      } on SocketException {
+        dataFetchingError.value ="No internet connection";
+      }
+    } else{
+      dataFetchingError.value ="No internet connection";
     }
   }
 
