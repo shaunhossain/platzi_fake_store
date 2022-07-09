@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 class Conversion{
   String selectIcon({required String name}){
     switch(name){
@@ -13,5 +15,10 @@ class Conversion{
         return 'assets/more.svg';
     }
     return 'assets/more.svg';
+  }
+
+  List<dynamic> imageUrl({required String images}){
+    final imageJson = jsonDecode(images);
+    return imageJson;
   }
 }
