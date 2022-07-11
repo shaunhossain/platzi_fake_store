@@ -30,6 +30,9 @@ class DatabaseHelper{
           description TEXT NOT NULL,
           category TEXT NOT NULL,
           images TEXT NOT NULL,
+          size TEXT NOT NULL,
+          color TEXT NOT NULL,
+          quantity INTEGER NOT NULL,
           created_at TEXT NOT NULL,
           updated_at TEXT NOT NULL
       )

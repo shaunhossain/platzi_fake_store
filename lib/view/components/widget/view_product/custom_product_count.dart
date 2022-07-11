@@ -15,7 +15,7 @@ class CustomProductCount extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         const CustomTextView(
-            text: 'Quality',
+            text: 'Quantity',
             fontSize: 16,
             fontWeight: FontWeight.w500,
             color: Colors.black),

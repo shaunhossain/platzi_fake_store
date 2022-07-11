@@ -1,6 +1,10 @@
+import 'dart:convert';
+import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:platzi_fake_store/db/db_model/favorite_product.dart';
+import 'package:platzi_fake_store/db/favorite_db_operation/favorite_db_operation.dart';
 import 'package:platzi_fake_store/model/product/product_item.dart';
 import 'package:platzi_fake_store/utils/network_type/connection_type.dart';
 import 'package:platzi_fake_store/view/services/initial_controller/initial_controller.dart';
@@ -73,11 +77,15 @@ class ViewSingleCategoryController extends GetxController {
     }
   }
 
-  void likedProduct(ProductItem productItem){
+  Future<void> likedProduct(ProductItem productItem) async {
     if(!likedProductList.contains(productItem.id)){
       likedProductList.add(productItem.id);
+      final favoriteProduct = FavoriteProduct(id: productItem.id, title: productItem.title, price: productItem.price, description: productItem.description, category: jsonEncode(productItem.category), images: jsonEncode(productItem.images), createdAt: DateTime.now().toIso8601String(), updatedAt: DateTime.now().toIso8601String());
+      int id = await FavoriteDbOperation.instance.add(favoriteProduct);
+      log(id.toString());
     }else{
       likedProductList.remove(productItem.id);
+      await FavoriteDbOperation.instance.remove(productItem.id);
     }
   }
 }

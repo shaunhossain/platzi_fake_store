@@ -129,8 +129,7 @@ class ViewProductScreen extends StatelessWidget {
                       const SizedBox(
                         height: 12,
                       ),
-                      Container(
-                        width: SizeConfig.width,
+                      const Divider(
                         height: 1,
                         color: Colors.grey,
                       ),
@@ -202,13 +201,12 @@ class ViewProductScreen extends StatelessWidget {
                       const SizedBox(
                         height: 16,
                       ),
-                      Container(
-                        width: SizeConfig.width,
+                      const Divider(
                         height: 1,
                         color: Colors.grey,
                       ),
                       const SizedBox(
-                        height: 12,
+                        height: 20,
                       ),
                       CustomProductFooter(
                         price: item.price,
