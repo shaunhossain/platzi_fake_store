@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:platzi_fake_store/utils/size_config.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
-import 'package:platzi_fake_store/view/components/widget/view_product/custom_add_cart_button.dart';
+import 'package:platzi_fake_store/view/components/widget/my_cart/custom_check_out_button.dart';
 
-class CustomProductFooter extends StatelessWidget {
-  const CustomProductFooter({Key? key, required this.addCart, required this.price}) : super(key: key);
-  final Function() addCart;
+class CustomMyCartFooter extends StatelessWidget {
+  const CustomMyCartFooter({Key? key, required this.checkOut, required this.price}) : super(key: key);
+  final Function() checkOut;
   final int price;
 
   @override
@@ -18,6 +18,7 @@ class CustomProductFooter extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            const SizedBox(height: 10,),
             const CustomTextView(
                 text: 'Total price',
                 fontSize: 12,
@@ -30,11 +31,11 @@ class CustomProductFooter extends StatelessWidget {
                 color: Colors.black),
           ],
         ),
-        CustomAddCartButton(
+        CustomCheckOutButton(
           minWidth: SizeConfig.width! * 0.6,
           height: 30,
-          title: 'Add Cart',
-          onPress: addCart,
+          title: 'Check out',
+          onPress: checkOut,
         ),
       ],
     );
