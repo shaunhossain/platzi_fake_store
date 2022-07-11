@@ -58,11 +58,12 @@ class CartScreen extends StatelessWidget {
           Positioned(
               bottom: 0,
               child: Container(
-                width: SizeConfig.width,
-                height: SizeConfig.height! * 0.1,
-                padding: const EdgeInsets.only(top: 12,left: 30,right: 30,bottom: 12),
-                color: Colors.white,
-                  child: CustomMyCartFooter(checkOut: (){}, price: 300)))
+                  width: SizeConfig.width,
+                  height: SizeConfig.height! * 0.1,
+                  padding: const EdgeInsets.only(
+                      top: 12, left: 30, right: 30, bottom: 12),
+                  color: Colors.white,
+                  child: CustomMyCartFooter(checkOut: () {}, price: 300)))
         ],
       ),
     ));
