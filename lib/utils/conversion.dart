@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:platzi_fake_store/model/product/product_category.dart';
+
 class Conversion{
   String selectIcon({required String name}){
     switch(name){
@@ -17,8 +19,18 @@ class Conversion{
     return 'assets/more.svg';
   }
 
-  List<dynamic> imageUrl({required String images}){
+  List<String> imageUrl({required String images}){
     final imageJson = jsonDecode(images);
-    return imageJson;
+    List<String> imageList = [];
+    imageJson.forEach((item){
+      imageList.add(item);
+    });
+    return imageList;
+  }
+
+  ProductCategory categoryString({required String category}){
+    final categoryJson = jsonDecode(category);
+   final convertedCategory = ProductCategory.fromJson(categoryJson);
+    return convertedCategory;
   }
 }

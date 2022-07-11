@@ -45,14 +45,13 @@ class MyWishlistScreen extends StatelessWidget {
                         childAspectRatio: 0.79,
                       ),
                       controller: controller.orderProductListController,
-                      itemCount: controller.listOfCompleteHabitFromLocal.length,
+                      itemCount: controller.listOfMyWishListProduct.length,
                       itemBuilder: (BuildContext ctx, index) {
                         return Obx(() => FavoriteProductViewItem(
-                          productItem: controller.listOfCompleteHabitFromLocal[index],
+                          productItem: controller.listOfMyWishListProduct[index],
                           onTap: () {
                             Get.toNamed(AppRoutes.viewProductScreen,
-                                arguments:
-                                controller.listOfCompleteHabitFromLocal[index]);
+                                arguments: controller.getDataFormat(controller.listOfMyWishListProduct[index]));
                           },
                         ),
                         );
