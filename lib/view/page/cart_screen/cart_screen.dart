@@ -4,7 +4,6 @@ import 'package:platzi_fake_store/db/db_model/add_cart_product.dart';
 import 'package:platzi_fake_store/utils/conversion.dart';
 import 'package:platzi_fake_store/utils/size_config.dart';
 import 'package:platzi_fake_store/view/components/navigator/app_pages.dart';
-import 'package:platzi_fake_store/view/components/navigator/app_routes.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_button.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_empty_page.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
