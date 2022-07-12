@@ -4,6 +4,7 @@ import 'package:platzi_fake_store/view/page/cart_screen/cart_controller/cart_con
 class CartBinding extends Bindings{
   @override
   void dependencies() {
-    Get.lazyPut<CartController>(()=> CartController());
+    Get.put(CartController());
+    //Get.lazyPut<CartController>(()=> CartController());
   }
 }

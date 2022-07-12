@@ -1,6 +1,6 @@
 class AddCartProduct{
   AddCartProduct({
-    required this.id,
+    this.id,
     required this.title,
     required this.price,
     required this.description,
@@ -13,13 +13,13 @@ class AddCartProduct{
     required this.updatedAt,
   });
 
-  final int id;
+  final int? id;
   final String title;
   final int price;
   final String description;
   final String category;
   final String images;
-  final String color;
+  final int color;
   final String size;
   final int quantity;
   final String createdAt;

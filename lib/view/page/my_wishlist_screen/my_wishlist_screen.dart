@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:platzi_fake_store/utils/size_config.dart';
 import 'package:platzi_fake_store/view/components/navigator/app_pages.dart';
+import 'package:platzi_fake_store/view/components/widget/custom_empty_page.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
 import 'package:platzi_fake_store/view/components/widget/favorite_product/favorite_product_view_item.dart';
 import 'package:platzi_fake_store/view/page/my_wishlist_screen/my_wishlist_controller/my_wishlist_controller.dart';
@@ -37,24 +38,11 @@ class MyWishlistScreen extends StatelessWidget {
                 padding: const EdgeInsets.only(left: 12, right: 12, top: 8),
                 child: Obx(
                   () => controller.listOfMyWishListProduct.isEmpty
-                      ? Center(
-                          child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset('assets/empty_wishlist.png',fit: BoxFit.scaleDown,),
-                            CustomTextView(
-                                text: 'You don\'t have an wishlist yet',
-                                fontSize: SizeConfig.textScaleFactor! * 18,
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black),
-                            CustomTextView(
-                                text: 'You don\'t save any product in your wishlist',
-                                fontSize: SizeConfig.textScaleFactor! * 14,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.grey),
-                          ],
-                        ))
+                      ? const CustomEmptyPage(
+                          asset: 'assets/empty_wishlist.png',
+                          warningTitle: 'You don\'t have an wishlist yet',
+                          warningDes:
+                              'You don\'t save any product in your wishlist')
                       : GridView.builder(
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(

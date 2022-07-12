@@ -12,11 +12,11 @@ class MyWishlistController extends GetxController {
   @override
   Future<void> onInit() async {
     super.onInit();
-    _getAllHabitsData();
+    _getAllProductData();
   }
 
   /// get all Habits
-  void _getAllHabitsData() async {
+  void _getAllProductData() async {
     listOfMyWishListProduct.value =
         await FavoriteDbOperation.instance.getProductsList();
   }
