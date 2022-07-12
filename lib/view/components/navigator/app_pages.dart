@@ -12,6 +12,7 @@ class AppRoutes {
   static const String specialOfferScreen = '/special-offer-screen';
   static const String viewSingleCarouselScreen = '/view-single-carousel-screen';
   static const String mostPopularScreen = '/most-popular-screen';
+  static const String checkoutScreen = '/checkout-screen';
   static const String viewSingleCategoryScreen = '/view-single-category-screen';
   static const String viewProductScreen = '/view-product-screen';
 
