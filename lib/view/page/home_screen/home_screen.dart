@@ -11,7 +11,6 @@ import 'package:platzi_fake_store/view/components/widget/home/custom_text_span_b
 import 'package:platzi_fake_store/view/components/widget/home/offer_item.dart';
 import 'package:platzi_fake_store/view/components/widget/home/product_view_item.dart';
 import 'package:platzi_fake_store/view/page/home_screen/home_controller/home_controller.dart';
-import 'package:platzi_fake_store/view/page/profile_screen/profile_controller/profile_controller.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatelessWidget {

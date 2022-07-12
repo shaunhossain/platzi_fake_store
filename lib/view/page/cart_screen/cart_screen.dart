@@ -66,7 +66,7 @@ class CartScreen extends StatelessWidget {
                                             .listOfAddCartProduct[index],
                                         deleteItem: () {
                                           removeProduct(
-                                            controller: controller,
+                                              controller: controller,
                                               item: controller
                                                   .listOfAddCartProduct[index]);
                                         },
@@ -105,7 +105,8 @@ class CartScreen extends StatelessWidget {
     );
   }
 
-  removeProduct({required AddCartProduct item, required CartController controller}) {
+  removeProduct(
+      {required AddCartProduct item, required CartController controller}) {
     Get.bottomSheet(
       Container(
         height: 330,
