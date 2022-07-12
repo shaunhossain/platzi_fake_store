@@ -36,26 +36,49 @@ class MyWishlistScreen extends StatelessWidget {
               body: Padding(
                 padding: const EdgeInsets.only(left: 12, right: 12, top: 8),
                 child: Obx(
-                      () => GridView.builder(
-                      gridDelegate:
-                      const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 20,
-                        childAspectRatio: 0.79,
-                      ),
-                      controller: controller.orderProductListController,
-                      itemCount: controller.listOfMyWishListProduct.length,
-                      itemBuilder: (BuildContext ctx, index) {
-                        return Obx(() => FavoriteProductViewItem(
-                          productItem: controller.listOfMyWishListProduct[index],
-                          onTap: () {
-                            Get.toNamed(AppRoutes.viewProductScreen,
-                                arguments: controller.getDataFormat(controller.listOfMyWishListProduct[index]));
-                          },
-                        ),
-                        );
-                      }),
+                  () => controller.listOfMyWishListProduct.isEmpty
+                      ? Center(
+                          child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset('assets/empty_wishlist.png',fit: BoxFit.scaleDown,),
+                            CustomTextView(
+                                text: 'You don\'t have an wishlist yet',
+                                fontSize: SizeConfig.textScaleFactor! * 18,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black),
+                            CustomTextView(
+                                text: 'You don\'t save any product in your wishlist',
+                                fontSize: SizeConfig.textScaleFactor! * 14,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.grey),
+                          ],
+                        ))
+                      : GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 20,
+                            childAspectRatio: 0.79,
+                          ),
+                          controller: controller.myWishListController,
+                          itemCount: controller.listOfMyWishListProduct.length,
+                          itemBuilder: (BuildContext ctx, index) {
+                            return Obx(
+                              () => FavoriteProductViewItem(
+                                productItem:
+                                    controller.listOfMyWishListProduct[index],
+                                onTap: () {
+                                  Get.toNamed(AppRoutes.viewProductScreen,
+                                      arguments: controller.getDataFormat(
+                                          controller
+                                              .listOfMyWishListProduct[index]));
+                                },
+                              ),
+                            );
+                          }),
                 ),
               )));
     });

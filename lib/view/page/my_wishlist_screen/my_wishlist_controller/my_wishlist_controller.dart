@@ -7,7 +7,7 @@ import 'package:platzi_fake_store/utils/conversion.dart';
 
 class MyWishlistController extends GetxController {
   var listOfMyWishListProduct = <FavoriteProduct>[].obs;
-  ScrollController orderProductListController = ScrollController();
+  ScrollController myWishListController = ScrollController();
 
   @override
   Future<void> onInit() async {
