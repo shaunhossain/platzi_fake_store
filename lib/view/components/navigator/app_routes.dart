@@ -7,6 +7,8 @@ import 'package:platzi_fake_store/view/page/auth/sign_up_screen/sign_up_screen.d
 import 'package:platzi_fake_store/view/page/auth/start_up_screen/start_up_binding/start_up_binding.dart';
 import 'package:platzi_fake_store/view/page/auth/start_up_screen/start_up_screen.dart';
 import 'package:platzi_fake_store/view/page/cart_screen/cart_screen.dart';
+import 'package:platzi_fake_store/view/page/checkout_screen/checkout_binding/checkout_binding.dart';
+import 'package:platzi_fake_store/view/page/checkout_screen/checkout_screen.dart';
 import 'package:platzi_fake_store/view/page/edit_profile_screen/edit_profile_binding/edit_profile_binding.dart';
 import 'package:platzi_fake_store/view/page/edit_profile_screen/edit_profile_screen.dart';
 import 'package:platzi_fake_store/view/page/home_screen/home_screen.dart';
@@ -19,7 +21,6 @@ import 'package:platzi_fake_store/view/page/my_wishlist_screen/my_wishlist_scree
 import 'package:platzi_fake_store/view/page/notification_screen/notification_binding/notification_binding.dart';
 import 'package:platzi_fake_store/view/page/notification_screen/notification_screen.dart';
 import 'package:platzi_fake_store/view/page/order_screen/order_screen.dart';
-import 'package:platzi_fake_store/view/page/profile_screen/profile_binding/profile_binding.dart';
 import 'package:platzi_fake_store/view/page/profile_screen/profile_screen.dart';
 import 'package:platzi_fake_store/view/page/search_product_screen/search_product_binding/search_product_binding.dart';
 import 'package:platzi_fake_store/view/page/search_product_screen/search_product_screen.dart';
@@ -132,6 +133,11 @@ class AppPages {
         name: AppRoutes.walletScreen,
         page: () => const WalletScreen(),
         binding: MainBinding(),
+        transition: Transition.rightToLeft),
+    GetPage(
+        name: AppRoutes.checkoutScreen,
+        page: () => const CheckoutScreen(),
+        binding: CheckoutBinding(),
         transition: Transition.rightToLeft),
 
   ];
