@@ -36,6 +36,7 @@ class CustomMyCartFooter extends StatelessWidget {
           height: 30,
           title: 'Check out',
           onPress: checkOut,
+          icon: const Icon(Icons.arrow_forward,color: Colors.white,),
         ),
       ],
     );

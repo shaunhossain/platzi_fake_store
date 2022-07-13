@@ -214,7 +214,9 @@ class ViewProductScreen extends StatelessWidget {
                               price: item.price *
                                   controller.productQuantity.value,
                               addCart: () {
-                                controller.addProductToCart(item);
+                                Future.delayed(Duration.zero,(){
+                                  controller.addProductToCart(item);
+                                }).then((value) => Get.back());
                               },
                             );
                           }),

@@ -15,24 +15,24 @@ dependencies:
   cupertino_icons: ^1.0.5
   http: ^0.13.4
   shared_preferences: ^2.0.15
-  flutter_svg: ^1.1.0
   get: ^4.6.5
   get_storage: ^2.0.3
   connectivity_plus: ^2.3.5
-  google_sign_in: ^5.3.3
-  flutter_facebook_auth: ^4.3.4+2
+  google_sign_in: ^5.4.0
+  flutter_facebook_auth: ^4.4.0
   awesome_notifications: ^0.6.21
   path_provider: ^2.0.11
   rxdart: ^0.27.4
-  material_design_icons_flutter: ^5.0.6595
-  sqflite: ^2.0.2+1
+  material_design_icons_flutter: ^5.0.6996
+  sqflite: ^2.0.3
   intl: ^0.17.0
-  dropdown_button2: ^1.6.2
+  dropdown_button2: ^1.6.3
   url_launcher: ^6.1.4
   carousel_slider: ^4.1.1
   shimmer: ^2.0.0
   smooth_page_indicator: ^1.0.0+2
   flutter_switch: ^0.3.2
+  flutter_svg: ^1.1.1+1
 
 
 dev_dependencies:
