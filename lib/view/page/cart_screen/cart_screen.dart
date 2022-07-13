@@ -94,7 +94,7 @@ class CartScreen extends StatelessWidget {
                       child: Obx(() {
                         return CustomMyCartFooter(
                             checkOut: () {
-                              Get.toNamed(AppRoutes.checkoutScreen);
+                              Get.toNamed(AppRoutes.checkoutScreen,arguments:  controller.listOfAddCartProduct);
                             },
                             price: controller.totalPriceOfAddCartProduct.value);
                       })))
