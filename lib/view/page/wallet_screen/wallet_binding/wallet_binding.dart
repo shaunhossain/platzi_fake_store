@@ -4,6 +4,7 @@ import 'package:platzi_fake_store/view/page/wallet_screen/wallet_controller/wall
 class WalletBinding extends Bindings{
   @override
   void dependencies() {
-    Get.lazyPut<WalletController>(()=> WalletController());
+    Get.put(WalletController());
+    //Get.lazyPut<WalletController>(()=> WalletController());
   }
 }

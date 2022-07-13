@@ -20,7 +20,6 @@ class IHomeProvider extends GetConnect implements HomeProvider {
       Uri.parse(baseUrl+allCategoryEndpoint),
     );
     if (response.statusCode == 200) {
-      log(response.body);
       return response.body;
     } else {
       return response.body;
@@ -33,7 +32,6 @@ class IHomeProvider extends GetConnect implements HomeProvider {
       Uri.parse(baseUrl+someLimitedProducts),
     );
     if (response.statusCode == 200) {
-      log(response.body);
       return response.body;
     } else {
       return response.body;
@@ -42,12 +40,10 @@ class IHomeProvider extends GetConnect implements HomeProvider {
 
   @override
   Future getAllProducts({required int offset}) async {
-    log('offset number -> $offset');
     final response = await http.get(
       Uri.parse(baseUrl+allProductEndpoint+offset.toString()+allProductEndpointSuffix),
     );
     if (response.statusCode == 200) {
-      log(response.body);
       return response.body;
     } else {
       return response.body;
@@ -66,7 +62,6 @@ class IHomeProvider extends GetConnect implements HomeProvider {
         }
     );
     if (response.statusCode == 200) {
-      log(response.body);
       return response.body;
     } else {
       return response.body;
