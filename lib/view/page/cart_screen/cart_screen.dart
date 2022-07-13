@@ -85,6 +85,8 @@ class CartScreen extends StatelessWidget {
                   ]),
               Positioned(
                   bottom: 0,
+                  right: 0,
+                  left: 0,
                   child: Container(
                       width: SizeConfig.width,
                       height: SizeConfig.height! * 0.1,

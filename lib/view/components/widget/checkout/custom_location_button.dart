@@ -17,7 +17,7 @@ class CustomLocationButton extends StatelessWidget {
         padding: const EdgeInsets.only(left: 16,right: 16,top: 8,bottom: 8),
         decoration: BoxDecoration(
             color: Colors.grey.shade100,
-            borderRadius: BorderRadius.circular(30)),
+            borderRadius: BorderRadius.circular(20)),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceBetween,

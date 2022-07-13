@@ -8,12 +8,14 @@ class CustomCheckOutButton extends StatelessWidget {
       required this.minWidth,
       required this.height,
       required this.title,
-      required this.onPress})
+      required this.onPress,
+        required this.icon})
       : super(key: key);
 
   final double minWidth;
   final double height;
   final String title;
+  final Widget icon;
   final Function() onPress;
 
   @override
@@ -27,15 +29,14 @@ class CustomCheckOutButton extends StatelessWidget {
         onPressed: onPress,
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             CustomTextView(
                 text: title,
                 fontSize: 14,
                 fontWeight: FontWeight.w600,
                 color: Colors.white),
-            SizedBox(width: SizeConfig.width! * 0.1,),
-            const Icon(Icons.arrow_forward,color: Colors.white,),
+            SizedBox(width: SizeConfig.width! * 0.15,),
+            icon,
           ],
         ));
   }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:platzi_fake_store/db/db_model/add_cart_product.dart';
 import 'package:platzi_fake_store/utils/conversion.dart';
-import 'package:platzi_fake_store/utils/endpoint.dart';
 import 'package:platzi_fake_store/utils/size_config.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
 
@@ -15,7 +14,7 @@ class CustomProductView extends StatelessWidget {
       width: SizeConfig.width,
       padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-          color: Colors.grey.shade100,
+          color: Colors.grey.shade300,
           borderRadius: BorderRadius.circular(30)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
