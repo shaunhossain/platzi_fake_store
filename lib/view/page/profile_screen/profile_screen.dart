@@ -192,7 +192,7 @@ class ProfileScreen extends StatelessWidget {
                               height: 26.0,
                               valueFontSize: 12.0,
                               toggleSize: 24.0,
-                              value: true,
+                              value: false,
                               borderRadius: 16.0,
                               onToggle: (val) {},
                             ),
