@@ -12,7 +12,7 @@ A demo e-commerce application using Platzi fake e-commerce rest api
 - reusable components
 - pagination on product listing
 
-## Platzi Fake Store API [Link](https://fakeapi.platzi.com/)
+## [Platzi Fake Store API](https://fakeapi.platzi.com/)
 - ✅ Pagination
 - ✅ Auth with JWT
 - ✅ Upload Files
