@@ -24,5 +24,5 @@ A demo e-commerce application using Platzi fake e-commerce rest api
 |<img src="screenshots/my_wishlist_screen_2.jpg" width=200/>|<img src="screenshots/home_screen_product_view_2.jpg" width=200/>|<img src="screenshots/my_cart_screen.jpg" width=200/>|<img src="screenshots/my_cart_confirm_order_2.jpg" width=200/>|
 |:----:|:----:|:----:|:----:|
 
-|<img src="screenshots/my_cart_confirm_order_3.jpg" width=200/>|<img src="screenshots/category_products_view.jpg" width=200/>|<img src="screenshots/wallet_screen.jpg" width=200/>|<img src="screenshots/profile_screen.jpg.jpg" width=200/>|
+|<img src="screenshots/my_cart_confirm_order_3.jpg" width=200/>|<img src="screenshots/category_products_view.jpg" width=200/>|<img src="screenshots/wallet_screen.jpg" width=200/>|<img src="screenshots/profile_screen.jpg" width=200/>|
 |:----:|:----:|:----:|:----:|
