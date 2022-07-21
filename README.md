@@ -10,8 +10,17 @@ A demo e-commerce application using Platzi fake e-commerce rest api
 - Social login (api not available )
 - Sqlite to store favorite and add cart product
 - reusable components
+- pagination on product listing
 
-## App [Link](https://github.com/shaunhossain/Bornomala/releases/download/v1.0/Bornomala.apk)
+## Platzi Fake Store API [Link](https://fakeapi.platzi.com/)
+- ✅ Pagination
+- ✅ Auth with JWT
+- ✅ Upload Files
+- ✅ Filter products by category
+- ✅ Create users and verify if exists
+- ✅ All CRUD Operations
+
+## App [Link](https://github.com/shaunhossain/shaunhossain/)
 
 ## Screenshots
 
