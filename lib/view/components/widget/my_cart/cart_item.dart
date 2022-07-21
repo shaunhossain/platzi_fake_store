@@ -5,7 +5,8 @@ import 'package:platzi_fake_store/utils/size_config.dart';
 import 'package:platzi_fake_store/view/components/widget/custom_text_view.dart';
 
 class CartItem extends StatelessWidget {
-  const CartItem({Key? key, required this.item, required this.deleteItem}) : super(key: key);
+  const CartItem({Key? key, required this.item, required this.deleteItem})
+      : super(key: key);
   final AddCartProduct item;
   final Function() deleteItem;
 
@@ -13,10 +14,9 @@ class CartItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: SizeConfig.width,
-      padding: const EdgeInsets.only(left: 10,right: 10),
+      padding: const EdgeInsets.only(left: 10, right: 10),
       decoration: BoxDecoration(
-          color: Colors.grey.shade300,
-          borderRadius: BorderRadius.circular(30)),
+          color: Colors.grey.shade300, borderRadius: BorderRadius.circular(30)),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -37,7 +37,8 @@ class CartItem extends StatelessWidget {
               child: Image.network(
                 Conversion().imageUrl(images: item.images).first,
                 fit: BoxFit.fitWidth,
-              ),),
+              ),
+            ),
           ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -55,7 +56,9 @@ class CartItem extends StatelessWidget {
                         fontWeight: FontWeight.w600,
                         color: Colors.black),
                   ),
-                  IconButton(onPressed: deleteItem, icon: const Icon(Icons.delete_outline))
+                  IconButton(
+                      onPressed: deleteItem,
+                      icon: const Icon(Icons.delete_outline))
                 ],
               ),
               Row(
@@ -66,23 +69,27 @@ class CartItem extends StatelessWidget {
                     width: 24,
                     height: 24,
                     decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Color(item.color)
-                    ),
+                        shape: BoxShape.circle, color: Color(item.color)),
                   ),
-                  SizedBox(width: SizeConfig.width! * 0.02,),
+                  SizedBox(
+                    width: SizeConfig.width! * 0.02,
+                  ),
                   const CustomTextView(
                       text: 'color',
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: Colors.grey),
-                  SizedBox(width: SizeConfig.width! * 0.02,),
+                  SizedBox(
+                    width: SizeConfig.width! * 0.02,
+                  ),
                   const CustomTextView(
                       text: '|',
                       fontSize: 15,
                       fontWeight: FontWeight.w400,
                       color: Colors.grey),
-                  SizedBox(width: SizeConfig.width! * 0.02,),
+                  SizedBox(
+                    width: SizeConfig.width! * 0.02,
+                  ),
                   CustomTextView(
                       text: 'size = ${item.size}',
                       fontSize: 15,
@@ -90,7 +97,9 @@ class CartItem extends StatelessWidget {
                       color: Colors.grey),
                 ],
               ),
-              const SizedBox(height: 10,),
+              const SizedBox(
+                height: 10,
+              ),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -100,26 +109,43 @@ class CartItem extends StatelessWidget {
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                       color: Colors.black),
-                  SizedBox(width: SizeConfig.width! * 0.05,),
+                  SizedBox(
+                    width: SizeConfig.width! * 0.05,
+                  ),
                   Container(
-                    width: SizeConfig.width! * 0.26,
+                    width: SizeConfig.width! * 0.25,
                     height: SizeConfig.height! * 0.04,
                     decoration: BoxDecoration(
                         shape: BoxShape.rectangle,
                         borderRadius: BorderRadius.circular(15),
-                        color: Colors.grey
-                    ),
+                        color: Colors.grey),
                     child: Row(
                       crossAxisAlignment: CrossAxisAlignment.center,
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(onPressed: (){}, icon: const Icon(Icons.remove,size: 13,),padding: EdgeInsets.zero,),
+                        FittedBox(
+                            child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.remove,
+                            size: 13,
+                          ),
+                          padding: EdgeInsets.zero,
+                        )),
                         CustomTextView(
                             text: '${item.quantity}',
                             fontSize: 12,
                             fontWeight: FontWeight.w400,
                             color: Colors.black),
-                        IconButton(onPressed: (){}, icon: const Icon(Icons.add,size: 13,),padding: EdgeInsets.zero,)
+                        FittedBox(
+                            child: IconButton(
+                          onPressed: () {},
+                          icon: const Icon(
+                            Icons.add,
+                            size: 13,
+                          ),
+                          padding: EdgeInsets.zero,
+                        ))
                       ],
                     ),
                   )
